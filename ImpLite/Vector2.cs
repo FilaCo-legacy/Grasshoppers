@@ -75,8 +75,8 @@ namespace ImpLite
 
         public static bool operator ==(Vector2 vA, Vector2 vB)
         {
-            if (Math.Abs(vA.X - vB.X) < ImpDefaults.GetInstance.Epsilon &&
-                Math.Abs(vA.Y - vB.Y) < ImpDefaults.GetInstance.Epsilon)
+            if (Math.Abs(vA.X - vB.X) < ImpParams.GetInstance.Epsilon &&
+                Math.Abs(vA.Y - vB.Y) < ImpParams.GetInstance.Epsilon)
                 return true;
 
             return false;
@@ -118,7 +118,7 @@ namespace ImpLite
         {
             var length = Length;
 
-            if (length < ImpDefaults.GetInstance.Epsilon)
+            if (length < ImpParams.GetInstance.Epsilon)
                 return;
 
             var invLen = 1.0f / Length;

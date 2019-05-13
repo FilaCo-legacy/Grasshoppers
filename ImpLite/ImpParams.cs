@@ -1,16 +1,17 @@
 namespace ImpLite
 {
-    public class ImpDefaults
+    public class ImpParams
     {
-        private static readonly ImpDefaults _instance = new ImpDefaults();
+        private static readonly ImpParams _instance = new ImpParams();
 
-        public static ImpDefaults GetInstance => _instance;
+        public static ImpParams GetInstance => _instance;
 
-        protected ImpDefaults()
+        protected ImpParams()
         {
             TimeStep = 1.0f / 60.0f;
             Gravity = new Vector2(0, 9.8f);
             Epsilon = 1e-7f;
+            GravityScale = 5.0f;
         }
 
         public float TimeStep { get; set; }
@@ -18,5 +19,7 @@ namespace ImpLite
         public Vector2 Gravity { get; set; }
         
         public float Epsilon { get; set; }
+        
+        public float GravityScale { get; set; }
     }
 }
