@@ -2,6 +2,6 @@
 {
     public interface IBoxable
     {
-        AABB GetBox { get; }
+        Box GetBox { get; }
     }
 }

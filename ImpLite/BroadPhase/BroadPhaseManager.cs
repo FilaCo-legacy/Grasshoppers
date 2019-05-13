@@ -17,7 +17,7 @@ namespace ImpLite.BroadPhase
         /// <param name="sceneHeight">Height of the scene, which this manager is connected with</param>
         internal BroadPhaseManager(int sceneWidth, int sceneHeight)
         {
-            _quadTree = new QuadTree<T>(0, new AABB(0, 0, sceneWidth, sceneHeight));
+            _quadTree = new QuadTree<T>(0, new Box(0, 0, sceneWidth, sceneHeight));
         }
 
         private static void FilterIntersectBoxes(T physObject, List<T> candidates)

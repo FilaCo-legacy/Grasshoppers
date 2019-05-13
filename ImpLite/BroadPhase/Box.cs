@@ -3,16 +3,15 @@
     /// <summary>
     /// Axis-Aligned Bounding Box
     /// </summary>
-    // ReSharper disable once InconsistentNaming
-    public struct AABB
+    public struct Box
     {
         /// <summary>
-        /// Coordinates of a left-upper corner of the <see cref="AABB"/>
+        /// Coordinates of a left-upper corner of the <see cref="Box"/>
         /// </summary>
         public Vector2 LeftUpper { get; }
 
         /// <summary>
-        /// Coordinates of a right-lower corner of the <see cref="AABB"/>
+        /// Coordinates of a right-lower corner of the <see cref="Box"/>
         /// </summary>
         public Vector2 RightLower { get; }
         
@@ -21,17 +20,17 @@
         public float Height => RightLower.Y - LeftUpper.Y;
 
         /// <summary>
-        /// Coordinates of a center point of the <see cref="AABB"/>
+        /// Coordinates of a center point of the <see cref="Box"/>
         /// </summary>
         public Vector2 Center => 0.5f * (LeftUpper + RightLower);
 
-        public AABB(float x, float y, float width, float height)
+        public Box(float x, float y, float width, float height)
         {
             LeftUpper = new Vector2(x, y);
             RightLower = new Vector2(x + width, y + height);
         }
 
-        public AABB(Vector2 leftUpper, Vector2 rightLower)
+        public Box(Vector2 leftUpper, Vector2 rightLower)
         {
             LeftUpper = leftUpper;
             RightLower = rightLower;
@@ -41,7 +40,7 @@
         /// Checks if this box intersects other box
         /// </summary>
         /// <returns></returns>
-        public bool Intersects(AABB other)
+        public bool Intersects(Box other)
         {
             if (RightLower.X < other.LeftUpper.X || LeftUpper.X > other.RightLower.X)            
                 return false;

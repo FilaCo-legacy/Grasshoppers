@@ -31,7 +31,7 @@ namespace ImpLite.BroadPhase
         /// <summary>
         /// Bounds of this <see cref="QuadTree{T}"/> node
         /// </summary>
-        private readonly AABB _bounds;
+        private readonly Box _bounds;
 
         /// <summary>
         /// Children nodes
@@ -49,39 +49,39 @@ namespace ImpLite.BroadPhase
             var x = _bounds.LeftUpper.X;
             var y = _bounds.LeftUpper.Y;
 
-            _nodes[0] = new QuadTree<T>(_level + 1, new AABB(x + subWidth, y, subWidth, subHeight));
-            _nodes[1] = new QuadTree<T>(_level + 1, new AABB(x, y, subWidth, subHeight));
-            _nodes[2] = new QuadTree<T>(_level + 1, new AABB(x, y + subWidth, subWidth, subHeight));
-            _nodes[3] = new QuadTree<T>(_level + 1, new AABB(x + subWidth, y + subHeight, subWidth, subHeight));
+            _nodes[0] = new QuadTree<T>(_level + 1, new Box(x + subWidth, y, subWidth, subHeight));
+            _nodes[1] = new QuadTree<T>(_level + 1, new Box(x, y, subWidth, subHeight));
+            _nodes[2] = new QuadTree<T>(_level + 1, new Box(x, y + subWidth, subWidth, subHeight));
+            _nodes[3] = new QuadTree<T>(_level + 1, new Box(x + subWidth, y + subHeight, subWidth, subHeight));
         }
 
-        private bool IsInTopQuadrants(AABB rectangle)
+        private bool IsInTopQuadrants(Box rectangle)
         {
             return rectangle.LeftUpper.Y < _bounds.Center.Y && (rectangle.LeftUpper.Y + rectangle.Height < _bounds.Center.Y);
         }
 
-        private bool IsInBottomQuadrants(AABB rectangle)
+        private bool IsInBottomQuadrants(Box rectangle)
         {
             return rectangle.LeftUpper.Y > _bounds.Center.Y;
         }
 
-        private bool IsInLeftQuadrants(AABB rectangle)
+        private bool IsInLeftQuadrants(Box rectangle)
         {
             return rectangle.LeftUpper.X < _bounds.Center.X && (rectangle.LeftUpper.X + rectangle.Width < _bounds.Center.X);
         }
 
-        private bool IsInRightQuadrants(AABB rectangle)
+        private bool IsInRightQuadrants(Box rectangle)
         {
             return rectangle.LeftUpper.X > _bounds.Center.X;
         }
 
         /// <summary>
-        /// Gets index of a child node, where the <see cref="AABB"/> is located
+        /// Gets index of a child node, where the <see cref="Box"/> is located
         /// </summary>
         /// <param name="rectangle"></param>
-        /// <returns>Returns "-1", if the <see cref="AABB"/> is located at least in two quads,
+        /// <returns>Returns "-1", if the <see cref="Box"/> is located at least in two quads,
         /// else returns the quad index</returns>
-        private int GetIndex(AABB rectangle)
+        private int GetIndex(Box rectangle)
         {
             var index = -1;
 
@@ -118,7 +118,7 @@ namespace ImpLite.BroadPhase
             return false;
         }
 
-        public QuadTree(int level, AABB bounds)
+        public QuadTree(int level, Box bounds)
         {
             _level = level;
             _bounds = bounds;
