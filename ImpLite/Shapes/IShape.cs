@@ -1,11 +1,12 @@
-﻿using ImpLite.BroadPhase;
+﻿using System;
+using ImpLite.BroadPhase;
 
 namespace ImpLite.Shapes
 {
     /// <summary>
     /// Interface that defines the shape of a physics object
     /// </summary>
-    public interface IShape
+    public interface IShape : ICloneable
     {
         float CalculateArea();
 

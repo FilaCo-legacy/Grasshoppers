@@ -12,6 +12,7 @@ namespace ImpLite
             Gravity = new Vector2(0, 9.8f);
             Epsilon = 1e-7f;
             GravityScale = 5.0f;
+            SceneIterations = 10;
         }
 
         public float TimeStep { get; set; }
@@ -21,5 +22,7 @@ namespace ImpLite
         public float Epsilon { get; set; }
         
         public float GravityScale { get; set; }
+        
+        public int SceneIterations { get; set; }
     }
 }

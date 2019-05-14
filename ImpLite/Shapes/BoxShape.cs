@@ -6,6 +6,10 @@ namespace ImpLite.Shapes
     {
         private readonly Box _box;
 
+        public float Width => _box.Width;
+
+        public float Height => _box.Height;
+
         public BoxShape(float width, float height)
         {
             _box = new Box(0.0f, 0.0f, width, height);
@@ -29,6 +33,12 @@ namespace ImpLite.Shapes
         public float ComputeInertia(float mass)
         {
             return 0.0f;
+        }
+
+        public object Clone()
+        {
+            var clone = new BoxShape(_box.Width, _box.Height);
+            return clone;
         }
     }
 }
