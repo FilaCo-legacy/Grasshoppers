@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace ImpLite
+namespace ImpLite.NarrowPhase
 {
     internal class HashEntry <T> : IEnumerable<T> where  T:IEquatable<T>
     {
