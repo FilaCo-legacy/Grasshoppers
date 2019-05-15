@@ -69,9 +69,24 @@ namespace ImpLite.NarrowPhase
 
         public override int GetHashCode()
         {
-            var seed = BodyA.GetHashCode();
+            var bodyAHash = BodyA.GetHashCode();
+            var bodyBHash = BodyB.GetHashCode();
 
-            return (int) (BodyB.GetHashCode() + 0x9e3779b9 + (seed << 6) + (seed >> 2));
+            var str = string.Format(bodyAHash.ToString() + bodyBHash.ToString());
+            
+            const int p = 31;
+
+            var hash = 0;
+            var pPow = 1;
+
+            for (var i = 0; i < str.Length; ++i)
+            {
+                hash += (str[i] - '0' + 1) * pPow;
+
+                pPow *= p;
+            }
+
+            return hash;
         }
     }
 }

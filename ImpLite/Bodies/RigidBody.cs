@@ -48,7 +48,21 @@ namespace ImpLite.Bodies
 
         public override int GetHashCode()
         {
-            return (int) Mass;
+            const int p = 11;
+
+            var hash = 0;
+            var pPow = 1;
+
+            var str = ((int) Mass).ToString();
+
+            for (var i = 0; i < str.Length; ++i)
+            {
+                hash += (str[i] - '0' + 1) * pPow;
+
+                pPow *= p;
+            }
+
+            return hash;
         }
     }
 }
