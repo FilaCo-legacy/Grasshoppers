@@ -1,7 +1,3 @@
-
-using ImpLite.NarrowPhase.Solvers;
-using ImpLite.Shapes;
-
 namespace ImpLite
 {
     public delegate bool MaskFilter (IMask lhs, IMask rhs);
@@ -21,8 +17,6 @@ namespace ImpLite
             SceneIterations = 10;
             PercentLinearProjection = 0.4f;
             Slop = 0.05f;
-            
-            Dispatcher = new ISolver[,] {};
         }
 
         public float TimeStep { get; set; }
@@ -38,8 +32,6 @@ namespace ImpLite
         public float PercentLinearProjection { get; set; }
         
         public float Slop { get; set; }
-        
-        public ISolver[,] Dispatcher { get; }
 
         public bool DefaultFilter(IMask lhs, IMask rhs)
         {

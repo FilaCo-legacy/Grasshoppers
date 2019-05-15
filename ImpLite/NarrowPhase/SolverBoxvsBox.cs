@@ -1,9 +1,7 @@
 namespace ImpLite.NarrowPhase.Solvers
 {
-    public class SolverBoxvsBox : ISolver
+    public class Solver : ISolver
     {
-        
-        
         public void ResolveCollision(Collider collider)
         {
             
