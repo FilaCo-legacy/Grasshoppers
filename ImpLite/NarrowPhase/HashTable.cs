@@ -24,7 +24,9 @@ namespace ImpLite.NarrowPhase
         {
             var hash = GetHashCode(value);
             
-            if (_table[hash] != null &&_table[hash].Contains(value))
+            if (_table[hash] == null)
+                _table[hash] = new HashEntry<T>(value);
+            else if (!_table[hash].Contains(value))
                 _table[hash].Add(value);
         }
 

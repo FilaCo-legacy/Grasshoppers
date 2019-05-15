@@ -7,7 +7,7 @@ namespace ImpLite.NarrowPhase
         private HashEntry<T> _next;
         private T Value { get; set; }
 
-        private HashEntry(T value)
+        public HashEntry(T value)
         {
             Value = value;
             _next = null;
