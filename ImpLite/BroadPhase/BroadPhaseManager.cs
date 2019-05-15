@@ -38,7 +38,7 @@ namespace ImpLite.BroadPhase
         /// Adds objects-actors of current step
         /// </summary>
         /// <param name="objects"></param>
-        public void Initialize(IEnumerable<T> objects)
+        public void Execute(IEnumerable<T> objects)
         {
             foreach (var curObject in objects)
                 _quadTree.Insert(curObject);

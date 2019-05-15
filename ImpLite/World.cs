@@ -23,7 +23,7 @@ namespace ImpLite
             if (body.IsKinematic || body.InverseMass < ImpParams.GetInstance.Epsilon)
                 return;
             
-            body.LinearVelocity += (body.Force * body.InverseMass + Gravity) * (TimeStep / 2.0f);
+            body.Velocity += (body.Force * body.InverseMass + Gravity) * (TimeStep / 2.0f);
         }
 
         private void IntegrateVelocities(RigidBody body)
@@ -33,7 +33,7 @@ namespace ImpLite
             
             IntegrateForces(body);
 
-            body.Position = body.LinearVelocity * TimeStep;
+            body.Position = body.Velocity * TimeStep;
             
             IntegrateForces(body);
         }
@@ -60,11 +60,13 @@ namespace ImpLite
         
         public void Step()
         {
-            _bpManager.Initialize(_bodies);
+            _bpManager.Execute(_bodies);
 
             TransferPhase();
             
+            _npManager.Execute();
             
+            Clear();
         }
         
     }
