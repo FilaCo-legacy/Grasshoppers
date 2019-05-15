@@ -20,6 +20,12 @@ namespace ImpLite.NarrowPhase
         
         public Vector2 Normal { get; set; }
 
+        public Collider(RigidBody bodyA, RigidBody bodyB)
+        {
+            BodyA = bodyA;
+            BodyB = bodyB;
+        }
+
         public void ResolveCollision()
         {
             Solver.Solve(this);

@@ -4,13 +4,28 @@ using ImpLite.Bodies;
 
 namespace ImpLite.NarrowPhase
 {
-    internal class NarrowPhaseManager<T> where T:Collider, IEquatable<T>
+    internal class NarrowPhaseManager<T> where T:Collider
     {
-        private readonly HashTable<T> _hashTable;        
+        private readonly HashTable<Collider> _hashTable;
+
+        private readonly List<Collider> _colliders;
+
+        private readonly int _iterations;
         
         public void Clear()
         {
+            _hashTable.Clear();
+        }
+
+        public void Add(RigidBody lhsBody, RigidBody rhsBody)
+        {
+            var collider = new Collider(lhsBody, rhsBody);
+            var reverseCollider = new Collider(rhsBody, lhsBody);
             
+            if (_hashTable.Contains(collider) || _hashTable.Contains(reverseCollider))
+                return;
+            
+            _colliders.Add(collider);
         }
     }
 }

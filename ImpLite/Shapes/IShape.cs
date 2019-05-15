@@ -3,12 +3,16 @@ using ImpLite.BroadPhase;
 
 namespace ImpLite.Shapes
 {
+    public enum ShapeType {Box, Circle, Polygon, eCount}
+    
     /// <summary>
     /// Interface that defines the shape of a physics object
     /// </summary>
     public interface IShape : ICloneable
     {
         float CalculateArea();
+        
+        ShapeType Type { get; }
 
         /// <summary>
         /// Returns box, which cover the whole shape of the object

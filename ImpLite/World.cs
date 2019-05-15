@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using ImpLite.Bodies;
 using ImpLite.BroadPhase;
 using ImpLite.NarrowPhase;
@@ -15,7 +16,7 @@ namespace ImpLite
         
         public Vector2 Gravity { get; set; }
         
-        public int Iterations { get; set; }
+        public MaskFilter Filter { get; set; }
 
         private void IntegrateForces(RigidBody body)
         {
@@ -40,12 +41,29 @@ namespace ImpLite
         private void Clear()
         {
             _bpManager.Clear();
+            _npManager.Clear();
         }
 
+        private void TransferPhase()
+        {
+            foreach (var lhsBody in _bodies)
+            {
+                var candidates = _bpManager.GetCandidates(lhsBody);
+
+                foreach (var rhsBody in candidates)
+                {
+                    if (Filter.Invoke(lhsBody, rhsBody))
+                        _npManager.Add(lhsBody, rhsBody);
+                }
+            }
+        }
+        
         public void Step()
         {
             _bpManager.Initialize(_bodies);
 
+            TransferPhase();
+            
             
         }
         

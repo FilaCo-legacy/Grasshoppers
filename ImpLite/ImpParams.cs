@@ -1,5 +1,7 @@
 namespace ImpLite
 {
+    public delegate bool MaskFilter (IMask lhs, IMask rhs);
+    
     public class ImpParams
     {
         private static readonly ImpParams _instance = new ImpParams();
@@ -30,5 +32,10 @@ namespace ImpLite
         public float PercentLinearProjection { get; set; }
         
         public float Slop { get; set; }
+
+        public bool DefaultFilter(IMask lhs, IMask rhs)
+        {
+            return (lhs.MaskBits & rhs.CategoryBits) != 0 && (lhs.CategoryBits & rhs.MaskBits) != 0;
+        }
     }
 }

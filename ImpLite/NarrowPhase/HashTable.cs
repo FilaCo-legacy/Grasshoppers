@@ -6,18 +6,18 @@ namespace ImpLite.NarrowPhase
     {
         private readonly HashEntry<T>[] _table;
 
-        private const int TableSize = (int) 5e6 + 11;
+        public const int MaxTableSize = (int) 5e6 + 11;
 
-        public HashTable()
+        public HashTable(int size = MaxTableSize)
         {
-            _table = new HashEntry<T>[TableSize];
+            _table = new HashEntry<T>[size];
 
             Clear();
         }
 
-        private static int GetHashCode(T value)
+        private int GetHashCode(T value)
         {
-            return value.GetHashCode() % TableSize;
+            return value.GetHashCode() % _table.Length;
         }
         
         public void Add(T value)
@@ -39,7 +39,7 @@ namespace ImpLite.NarrowPhase
 
         public void Clear()
         {
-            for (var i = 0; i < TableSize; ++i)
+            for (var i = 0; i < _table.Length; ++i)
                 _table[i] = null;   
         }
     }
