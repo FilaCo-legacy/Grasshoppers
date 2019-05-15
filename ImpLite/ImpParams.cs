@@ -13,6 +13,8 @@ namespace ImpLite
             Epsilon = 1e-7f;
             GravityScale = 5.0f;
             SceneIterations = 10;
+            PercentLinearProjection = 0.4f;
+            Slop = 0.05f;
         }
 
         public float TimeStep { get; set; }
@@ -24,5 +26,9 @@ namespace ImpLite
         public float GravityScale { get; set; }
         
         public int SceneIterations { get; set; }
+        
+        public float PercentLinearProjection { get; set; }
+        
+        public float Slop { get; set; }
     }
 }

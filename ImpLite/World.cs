@@ -9,7 +9,7 @@ namespace ImpLite
     {
         private readonly List<RigidBody> _bodies;
         private readonly BroadPhaseManager<RigidBody> _bpManager;
-        private readonly NarrowPhaseManager<Collider> _npManager;
+        private readonly NarrowPhaseManager<int, List<RigidBody>> _npManager;
         
         public float TimeStep { get; set; }
         
@@ -46,10 +46,8 @@ namespace ImpLite
         {
             _bpManager.Initialize(_bodies);
 
-            foreach (var curBody in _bodies)
+            for (var i = 0; i < _bodies.Count; ++i)
             {
-                var candidates = _bpManager.GetCandidates(curBody);
-                
                 
             }
         }
