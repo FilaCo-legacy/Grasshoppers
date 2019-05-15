@@ -1,11 +1,14 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
-namespace ImpLite.NarrowPhase
+namespace ImpLite
 {
-    internal class HashEntry <T> where  T:IEquatable<T>
+    internal class HashEntry <T> : IEnumerable<T> where  T:IEquatable<T>
     {
         private HashEntry<T> _next;
-        private T Value { get; set; }
+        public T Value { get; }
 
         public HashEntry(T value)
         {
@@ -34,6 +37,23 @@ namespace ImpLite.NarrowPhase
                 return false;
 
             return true;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            var cur = this;
+
+            while (cur != null)
+            {
+                yield return cur.Value;
+
+                cur = cur._next;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

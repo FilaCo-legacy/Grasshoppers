@@ -4,7 +4,7 @@ using ImpLite.NarrowPhase.Solvers;
 
 namespace ImpLite.NarrowPhase
 {
-    internal class Collider : IEquatable<Collider>
+    public class Collider : IEquatable<Collider>
     {
         private float _mixedRestitution;
         private float _mixedStaticFriction;
@@ -13,31 +13,37 @@ namespace ImpLite.NarrowPhase
         public RigidBody BodyA { get; }
         
         public RigidBody BodyB { get; }
-        
-        public ISolver Solver { get; }
-        
+
         public float Penetration { get; set; }
         
         public Vector2 Normal { get; set; }
+        
+        public Vector2 [] Contacts { get; }
+        
+        public int ContactNumber { get; set; }
 
         public Collider(RigidBody bodyA, RigidBody bodyB)
         {
             BodyA = bodyA;
             BodyB = bodyB;
+            Contacts = new Vector2[2];
         }
 
         public void ResolveCollision()
         {
-            Solver.Solve(this);
+            var codeShapeA = (int) BodyA.Shape.Type;
+            var codeShapeB = (int) BodyB.Shape.Type;
+            
+            ImpParams.GetInstance.Dispatcher[codeShapeA, codeShapeB].ResolveCollision(this);
         }
 
         public void PositionalCorrection()
         {
-            var Percentage = ImpParams.GetInstance.PercentLinearProjection;
-            var Slop = ImpParams.GetInstance.Slop;
+            var percentage = ImpParams.GetInstance.PercentLinearProjection;
+            var slop = ImpParams.GetInstance.Slop;
             
-            var correction = Math.Max(Penetration - Slop, 0.0f) / 
-                                  (BodyA.InverseMass + BodyB.InverseMass) * Percentage * Normal;
+            var correction = Math.Max(Penetration - slop, 0.0f) / 
+                                  (BodyA.InverseMass + BodyB.InverseMass) * percentage * Normal;
             BodyA.Position -= BodyA.InverseMass * correction;
             BodyB.Position += BodyB.InverseMass * correction;
         }
@@ -49,6 +55,11 @@ namespace ImpLite.NarrowPhase
             _mixedStaticFriction = (float)Math.Sqrt(BodyA.Material.StaticFriction * BodyB.Material.StaticFriction);
             _mixedDynamicFriction = (float)Math.Sqrt(BodyA.Material.DynamicFriction * BodyB.Material.DynamicFriction);
             
+            
+        }
+
+        public void ApplyImpulse()
+        {
             
         }
 

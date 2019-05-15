@@ -1,6 +1,7 @@
 using System;
+using System.Linq;
 
-namespace ImpLite.NarrowPhase
+namespace ImpLite
 {
     internal class HashTable <T> where T : IEquatable<T>
     {
@@ -28,6 +29,22 @@ namespace ImpLite.NarrowPhase
                 _table[hash] = new HashEntry<T>(value);
             else if (!_table[hash].Contains(value))
                 _table[hash].Add(value);
+        }
+
+        public bool FindByHash(int hash, out T value)
+        {
+            value = default;
+            
+            hash %= _table.Length;
+
+            if (_table[hash] == null)
+                return false;
+
+            var values = _table[hash].ToArray();
+            
+            value = values[0];
+
+            return values.Length == 1;
         }
 
         public bool Contains(T value)

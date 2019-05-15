@@ -10,8 +10,6 @@ namespace ImpLite.Shapes
 
         public float Height => _box.Height;
 
-        public ShapeType Type => ShapeType.Box;
-
         public BoxShape(float width, float height)
         {
             _box = new Box(0.0f, 0.0f, width, height);
@@ -21,6 +19,8 @@ namespace ImpLite.Shapes
         {
             return _box.Width * _box.Height;
         }
+
+        public ShapeType Type => ShapeType.Box;
 
         public Box GetBox()
         {
