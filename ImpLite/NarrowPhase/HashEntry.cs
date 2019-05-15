@@ -1,5 +1,4 @@
 using System;
-using System.Data.SqlTypes;
 
 namespace ImpLite.NarrowPhase
 {
@@ -16,12 +15,6 @@ namespace ImpLite.NarrowPhase
 
         public void Add(T value)
         {
-            if (Value.Equals(default))
-            {
-                Value = value;
-                return;
-            }
-            
             var cur = this;
 
             while (cur._next != null)

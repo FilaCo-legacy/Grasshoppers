@@ -124,6 +124,26 @@ namespace ImpLite
             var invLen = 1.0f / Length;
             X *= invLen;
             Y *= invLen;
-        } 
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Vector2))
+            {
+                return false;
+            }
+
+            var vector = (Vector2)obj;
+            
+            return this == vector;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 1861411795;
+            hashCode = hashCode * -1521134295 + X.GetHashCode();
+            hashCode = hashCode * -1521134295 + Y.GetHashCode();
+            return hashCode;
+        }
     }
 }

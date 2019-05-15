@@ -11,6 +11,8 @@ namespace ImpLite.NarrowPhase
         public HashTable()
         {
             _table = new HashEntry<T>[TableSize];
+
+            Clear();
         }
 
         private static int GetHashCode(T value)
@@ -22,7 +24,7 @@ namespace ImpLite.NarrowPhase
         {
             var hash = GetHashCode(value);
             
-            if (!_table[hash].Contains(value))
+            if (_table[hash] != null &&_table[hash].Contains(value))
                 _table[hash].Add(value);
         }
 
@@ -30,7 +32,13 @@ namespace ImpLite.NarrowPhase
         {
             var hash = GetHashCode(value);
 
-            return _table[hash].Contains(value);
+            return _table != null && _table[hash].Contains(value);
+        }
+
+        public void Clear()
+        {
+            for (var i = 0; i < TableSize; ++i)
+                _table[i] = null;   
         }
     }
 }

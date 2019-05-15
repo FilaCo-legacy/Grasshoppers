@@ -45,5 +45,10 @@ namespace ImpLite.Bodies
         {
             LinearVelocity += InverseMass * impulse;
         }
+
+        public override int GetHashCode()
+        {
+            return (int) Mass;
+        }
     }
 }

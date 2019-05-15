@@ -4,7 +4,7 @@ using ImpLite.NarrowPhase.Solvers;
 
 namespace ImpLite.NarrowPhase
 {
-    internal class Collider
+    internal class Collider : IEquatable<Collider>
     {
         private float _mixedRestitution;
         private float _mixedStaticFriction;
@@ -44,6 +44,28 @@ namespace ImpLite.NarrowPhase
             _mixedDynamicFriction = (float)Math.Sqrt(BodyA.Material.DynamicFriction * BodyB.Material.DynamicFriction);
             
             
+        }
+
+        public bool Equals(Collider other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(BodyA, other.BodyA) && Equals(BodyB, other.BodyB);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Collider) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            var seed = BodyA.GetHashCode();
+
+            return (int) (BodyB.GetHashCode() + 0x9e3779b9 + (seed << 6) + (seed >> 2));
         }
     }
 }
