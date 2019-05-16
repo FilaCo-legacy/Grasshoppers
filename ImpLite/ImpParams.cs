@@ -8,7 +8,7 @@ namespace ImpLite
 
         public static ImpParams GetInstance => Instance;
 
-        protected ImpParams()
+        private ImpParams()
         {
             TimeStep = 1.0f / 60.0f;
             Gravity = new Vector2(0, 9.8f);

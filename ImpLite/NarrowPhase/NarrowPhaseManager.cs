@@ -8,13 +8,17 @@ namespace ImpLite.NarrowPhase
     {
         private readonly HashTable<Collider> _hashTable;
 
-        private readonly List<Collider> _colliders;
+        private readonly List<Collider> _contacts;
 
-        private readonly int _iterations;
+        public NarrowPhaseManager()
+        {
+            _hashTable = new HashTable<Collider>();
+            _contacts = new List<Collider>();
+        }
 
         private void Initialize()
         {
-            foreach (var cur in _colliders)
+            foreach (var cur in _contacts)
             {
                 cur.Initialize();
             }
@@ -22,18 +26,18 @@ namespace ImpLite.NarrowPhase
         
         private void ApplyImpulse()
         {
-            for (var i = 0; i < _iterations; ++i)
+            for (var i = 0; i < ImpParams.GetInstance.SceneIterations; ++i)
             {
-                foreach (var cur in _colliders)
+                foreach (var cur in _contacts)
                 {
                     cur.ApplyImpulse();
                 }
             }
         }
 
-        private void PositionalCorrection()
+        public void PositionalCorrection()
         {
-            foreach (var cur in _colliders)
+            foreach (var cur in _contacts)
             {
                 cur.PositionalCorrection();
             }
@@ -52,14 +56,13 @@ namespace ImpLite.NarrowPhase
             if (_hashTable.Contains(collider) || _hashTable.Contains(reverseCollider))
                 return;
             
-            _colliders.Add(collider);
+            _contacts.Add(collider);
         }
 
         public void Execute()
         {
             Initialize();
             ApplyImpulse();
-            PositionalCorrection();
         }
     }
 }

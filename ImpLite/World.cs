@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using ImpLite.Bodies;
 using ImpLite.BroadPhase;
 using ImpLite.NarrowPhase;
@@ -11,37 +10,67 @@ namespace ImpLite
         private readonly List<RigidBody> _bodies;
         private readonly BroadPhaseManager<RigidBody> _bpManager;
         private readonly NarrowPhaseManager<Collider> _npManager;
-        
-        public float TimeStep { get; set; }
-        
-        public Vector2 Gravity { get; set; }
-        
+
         public MaskFilter Filter { get; set; }
 
-        private void IntegrateForces(RigidBody body)
+        public int Width { get; set; }
+        
+        public int Height { get; set; }
+
+        public World(int width, int height)
+        {
+            Width = width;
+            Height = height;
+            Filter = ImpParams.GetInstance.DefaultFilter;
+            
+            _bodies = new List<RigidBody>();
+            _bpManager = new BroadPhaseManager<RigidBody>(Width, Height);
+            _npManager = new NarrowPhaseManager<Collider>();
+        }
+
+        private static void IntegrateForces(RigidBody body)
         {
             if (body.IsKinematic || body.InverseMass < ImpParams.GetInstance.Epsilon)
                 return;
+
+            var gravity = ImpParams.GetInstance.Gravity;
+            var timeStep = ImpParams.GetInstance.TimeStep;
             
-            body.Velocity += (body.Force * body.InverseMass + Gravity) * (TimeStep / 2.0f);
+            body.Velocity += (body.Force * body.InverseMass + gravity) * (timeStep / 2.0f);
         }
 
-        private void IntegrateVelocities(RigidBody body)
+        private static void IntegrateVelocities(RigidBody body)
         {
             if (body.InverseMass < ImpParams.GetInstance.Epsilon)
                 return;
             
+            var timeStep = ImpParams.GetInstance.TimeStep;
+            
             IntegrateForces(body);
 
-            body.Position = body.Velocity * TimeStep;
+            body.Position = body.Velocity * timeStep;
             
             IntegrateForces(body);
         }
 
-        private void Clear()
+        private void ClearOutBoundsBodies()
+        {
+            _bodies.RemoveAll(body => body.Position.X < 0 || body.Position.Y < 0 || body.Position.X > Width ||
+                                      body.Position.Y > Height);
+        }
+        
+        private void ClearManagers()
         {
             _bpManager.Clear();
             _npManager.Clear();
+        }
+
+        private void ClearForces()
+        {
+            foreach (var cur in  _bodies)
+            {
+                cur.Force.Set(0.0f,0.0f);
+            }
         }
 
         private void TransferPhase()
@@ -65,9 +94,29 @@ namespace ImpLite
             TransferPhase();
             
             _npManager.Execute();
+
+            foreach (var cur in _bodies)
+            {
+                IntegrateVelocities(cur);
+            }
             
-            Clear();
+            _npManager.PositionalCorrection();
+            
+            ClearForces();
+            
+            ClearManagers();
+            
+            ClearOutBoundsBodies();
         }
-        
+
+        public void AddBody(RigidBody body)
+        {
+            _bodies.Add(body);
+        }
+
+        public void RemoveBody(RigidBody body)
+        {
+            _bodies.Remove(body);
+        }
     }
 }
