@@ -20,6 +20,8 @@ namespace GameServer.Models
         
         public int BootsColor { get; set; }
         
+        public string SpritePath { get; set; }
+        
         public ICollection<Player> Players { get; set; }
 
         public PlayerAppearance()
