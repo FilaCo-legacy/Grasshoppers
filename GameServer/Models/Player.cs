@@ -12,6 +12,8 @@ namespace GameServer.Models
         
         public ICollection<Item> Items { get; set; }
         
+        public ICollection<GameSession> GameSessions { get; set; }
+        
         public int AppearanceId { get; set; }
         
         [ForeignKey("PlayerAppearance")]
