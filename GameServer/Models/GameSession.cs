@@ -10,9 +10,12 @@ namespace GameServer.Models
         public DateTime BeginDate { get; set; }
         
         public DateTime EndDate { get; set; }
-        
-        
-        
+
         public ICollection<Player> Players { get; set; }
+
+        public GameSession()
+        {
+            Players = new List<Player>();
+        }
     }
 }

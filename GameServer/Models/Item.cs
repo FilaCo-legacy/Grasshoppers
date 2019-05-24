@@ -11,5 +11,10 @@ namespace GameServer.Models
         public string Name { get; set; }
         
         public ICollection<Player> Players { get; set; }
+
+        public Item()
+        {
+            Players = new List<Player>();
+        }
     }
 }

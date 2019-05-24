@@ -20,5 +20,11 @@ namespace GameServer.Models
         
         [ForeignKey("AppearanceId")]
         public PlayerAppearance Appearance { get; set; }
+
+        public Player()
+        {
+            Items = new List<Item>();
+            GameSessions = new List<GameSession>();
+        }
     }
 }
