@@ -11,20 +11,20 @@ namespace GameServer.Models
         public string Name { get; set; }
         
         
-        public ICollection<Item> Items { get; set; }
+        //public ICollection<Item> Items { get; set; }
         
-        public ICollection<GameSession> GameSessions { get; set; }
+        //public ICollection<GameSession> GameSessions { get; set; }
         
         
         public int AppearanceId { get; set; }
         
         [ForeignKey("AppearanceId")]
-        public PlayerAppearance Appearance { get; set; }
+        public PlayerAppearance PlayerAppearance { get; set; }
 
         public Player()
         {
-            Items = new List<Item>();
-            GameSessions = new List<GameSession>();
+            //Items = new List<Item>();
+            //GameSessions = new List<GameSession>();
         }
     }
 }

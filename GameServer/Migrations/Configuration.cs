@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
-namespace Tmp.Migrations
+namespace GameServer.Migrations
 {
     internal sealed class Configuration : DbMigrationsConfiguration<GameServer.PlatformerContext>
     {
