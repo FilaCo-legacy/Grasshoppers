@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace GameServer.Models
@@ -6,8 +7,12 @@ namespace GameServer.Models
     {
         public int Id { get; set; }
         
-        public ICollection<Player> Players { get; set; }
+        public DateTime BeginDate { get; set; }
         
-        public ICollection<LogGameSession> Logs { get; set; }
+        public DateTime EndDate { get; set; }
+        
+        
+        
+        public ICollection<Player> Players { get; set; }
     }
 }
