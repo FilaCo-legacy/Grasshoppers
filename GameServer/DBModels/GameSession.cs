@@ -22,12 +22,12 @@ namespace GameServer.DBModels
 
         public ICollection<Player> Players { get; set; }
         
-        public ICollection<AwardEntry> AwardsList { get; set; }
+        public ICollection<PlayerResultEntry> PlayerResults { get; set; }
 
         public GameSession()
         {
             Players = new List<Player>();
-            AwardsList = new List<AwardEntry>();
+            PlayerResults = new List<PlayerResultEntry>();
         }
     }
 }
