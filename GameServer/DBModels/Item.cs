@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameServer.DBModels
 {
@@ -26,7 +25,7 @@ namespace GameServer.DBModels
         /// <summary>
         /// A name of this <see cref="Item"/>
         /// </summary>
-        [Required]
+        [Required, MaxLength(50)]
         public string Name { get; set; }
         
         /// <summary>
