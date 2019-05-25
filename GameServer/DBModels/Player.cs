@@ -27,14 +27,13 @@ namespace GameServer.DBModels
         public ICollection<GameSession> GameSessions { get; set; }
         
         /// <summary>
-        /// An appearance of this <see cref="Player"/>
+        /// Local path to the directory with <see cref="Player"/>'s sprites
         /// </summary>
         [Required]
-        public PlayerAppearance Appearance { get; set; }
+        public string SpritePath { get; set; }
 
         public Player()
         {
-            Appearance = new PlayerAppearance();
             Items = new List<Item>();
             GameSessions = new List<GameSession>();
         }
