@@ -8,9 +8,9 @@ namespace GameServer.DBModels
 {
     public class Trade
     {
-        internal string _firstPlayerItems;
+        internal string _firstPlayerItems { get; private set; }
 
-        internal string _secondPlayerItems;
+        internal string _secondPlayerItems { get; private set; }
         
         public int Id { get; set; }
         

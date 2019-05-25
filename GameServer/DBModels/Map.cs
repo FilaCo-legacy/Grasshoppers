@@ -9,7 +9,7 @@ namespace GameServer.DBModels
 {
     public class Map
     {
-        internal string _mapInfo { get; set; }
+        internal string _mapInfo { get; private set; }
         
         public int Id { get; set; }
 
