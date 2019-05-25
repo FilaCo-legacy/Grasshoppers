@@ -21,10 +21,13 @@ namespace GameServer.DBModels
         public Mission GsMission { get; set; }
 
         public ICollection<Player> Players { get; set; }
+        
+        public ICollection<AwardEntry> AwardsList { get; set; }
 
         public GameSession()
         {
             Players = new List<Player>();
+            AwardsList = new List<AwardEntry>();
         }
     }
 }
