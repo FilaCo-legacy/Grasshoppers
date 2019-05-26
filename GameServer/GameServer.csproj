@@ -11,6 +11,7 @@
     <AssemblyName>GameServer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,6 +46,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Npgsql, Version=4.0.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7">
       <HintPath>..\packages\Npgsql.4.0.7\lib\net451\Npgsql.dll</HintPath>
       <Private>True</Private>
@@ -83,14 +88,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBModels\Configurations\MapDefaultConfig.cs" />
+    <Compile Include="DBModels\Configurations\TradeDefaultConfig.cs" />
+    <Compile Include="DBModels\PlayerResultEntry.cs" />
+    <Compile Include="GameCycle\MapInfo.cs" />
+    <Compile Include="Migrations\201905251413243_PlayersItemsApps.cs" />
+    <Compile Include="Migrations\201905251413243_PlayersItemsApps.Designer.cs">
+      <DependentUpon>201905251413243_PlayersItemsApps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905260947246_MainVersion.cs" />
+    <Compile Include="Migrations\201905260947246_MainVersion.Designer.cs">
+      <DependentUpon>201905260947246_MainVersion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\GameSession.cs" />
-    <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\Map.cs" />
-    <Compile Include="Models\Mission.cs" />
-    <Compile Include="Models\Player.cs" />
-    <Compile Include="Models\PlayerAppearance.cs" />
-    <Compile Include="Models\Trade.cs" />
+    <Compile Include="DBModels\GameSession.cs" />
+    <Compile Include="DBModels\Item.cs" />
+    <Compile Include="DBModels\Map.cs" />
+    <Compile Include="DBModels\Mission.cs" />
+    <Compile Include="DBModels\Player.cs" />
+    <Compile Include="DBModels\Trade.cs" />
     <Compile Include="PlatformerContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +114,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905251413243_PlayersItemsApps.resx">
+      <DependentUpon>201905251413243_PlayersItemsApps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905260947246_MainVersion.resx">
+      <DependentUpon>201905260947246_MainVersion.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
