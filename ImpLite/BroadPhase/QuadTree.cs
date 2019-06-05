@@ -105,18 +105,14 @@ namespace ImpLite.BroadPhase
 
         private bool TryInsertChildren(T obj)
         {
-            if (!(_nodes[0] is null))
-            {
-                var index = GetIndex(obj.GetBox);
+            if (_nodes[0] is null) return false;
+            
+            var index = GetIndex(obj.GetBox);
 
-                if (index != -1)
-                {
-                    _nodes[index].Insert(obj);
-                    return true;
-                }
-            }
-
-            return false;
+            if (index == -1) return false;
+            
+            _nodes[index].Insert(obj);
+            return true;
         }
 
         public QuadTree(int level, Box bounds)
@@ -133,11 +129,10 @@ namespace ImpLite.BroadPhase
 
             for (var i = 0; i < _nodes.Length; ++i)
             {
-                if (!(_nodes[i] is null))
-                {
-                    _nodes[i].Clear();
-                    _nodes[i] = null;
-                }
+                if (_nodes[i] is null) continue;
+                
+                _nodes[i].Clear();
+                _nodes[i] = null;
             }
         }
 
@@ -151,18 +146,17 @@ namespace ImpLite.BroadPhase
 
             _objects.Add(obj);
 
-            if (_objects.Count > MaxObjects && _level < MaxLevels)
-            {
-                if (!(_nodes[0] is null)) Split();
+            if (_objects.Count <= MaxObjects || _level >= MaxLevels) return;
+            
+            if (!(_nodes[0] is null)) Split();
 
-                var i = 0;
-                while (i < _objects.Count)
-                {
-                    if (TryInsertChildren(_objects[i]))
-                        _objects.RemoveAt(i);
-                    else
-                        i++;
-                }
+            var i = 0;
+            while (i < _objects.Count)
+            {
+                if (TryInsertChildren(_objects[i]))
+                    _objects.RemoveAt(i);
+                else
+                    ++i;
             }
         }
 

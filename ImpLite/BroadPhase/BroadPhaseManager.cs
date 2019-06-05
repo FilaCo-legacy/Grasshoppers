@@ -3,21 +3,31 @@
 namespace ImpLite.BroadPhase
 {
     /// <summary>
-    /// Fast-checker to find objects that can collide during current step.
+    /// Represents fast-checker to find objects that can collide during current step.
     /// Physics objects are instantiated as their boxes, which covers their shapes.
     /// </summary>
-    internal class BroadPhaseManager <T> where T: IBoxable
+    public class BroadPhaseManager <T> where T: IBoxable
     {
         private readonly IBoxTree<T> _boxTree;
 
         /// <summary>
-        /// Initialize an object of <see cref="BroadPhaseManager{T}"/> with given dimensions
+        /// Initialize an object of <see cref="BroadPhaseManager{T}"/> with given dimensions and using
+        /// internal <see cref="QuadTree{T}"/>
         /// </summary>
         /// <param name="sceneWidth">Width of the scene, which this manager is connected with</param>
         /// <param name="sceneHeight">Height of the scene, which this manager is connected with</param>
-        internal BroadPhaseManager(int sceneWidth, int sceneHeight)
+        public BroadPhaseManager(int sceneWidth, int sceneHeight)
         {
             _boxTree = new QuadTree<T>(0, new Box(0, 0, sceneWidth, sceneHeight));
+        }
+
+        /// <summary>
+        /// Initialize an object of <see cref="BroadPhaseManager{T}"/> using given <see cref="IBoxTree{T}"/>
+        /// </summary>
+        /// <param name="boxTree"></param>
+        public BroadPhaseManager(IBoxTree<T> boxTree)
+        {
+            _boxTree = boxTree;
         }
 
         private static void FilterIntersectBoxes(T physObject, List<T> candidates)
