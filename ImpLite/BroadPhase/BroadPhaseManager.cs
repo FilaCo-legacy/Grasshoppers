@@ -6,7 +6,7 @@ namespace ImpLite.BroadPhase
     /// Represents fast-checker to find objects that can collide during current step.
     /// Physics objects are instantiated as their boxes, which covers their shapes.
     /// </summary>
-    public class BroadPhaseManager <T> where T: IBoxable
+    public class BroadPhaseManager <T> : IBroadPhaseManager<T> where T: IBoxable
     {
         private readonly IBoxTree<T> _boxTree;
 
@@ -59,7 +59,7 @@ namespace ImpLite.BroadPhase
         /// </summary>
         /// <param name="physObject"></param>
         /// <returns></returns>
-        public List<T> GetCandidates(T physObject)
+        public List<T> GetNeighbours(T physObject)
         {
             var candidates = new List<T>();
 

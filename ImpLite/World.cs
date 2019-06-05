@@ -8,7 +8,7 @@ namespace ImpLite
     public class World
     {
         private readonly List<RigidBody> _bodies;
-        private readonly BroadPhaseManager<RigidBody> _bpManager;
+        private readonly IBroadPhaseManager<RigidBody> _bpManager;
         private readonly NarrowPhaseManager<Collider> _npManager;
 
         public MaskFilter Filter { get; set; }
@@ -77,7 +77,7 @@ namespace ImpLite
         {
             foreach (var lhsBody in _bodies)
             {
-                var candidates = _bpManager.GetCandidates(lhsBody);
+                var candidates = _bpManager.GetNeighbours(lhsBody);
 
                 foreach (var rhsBody in candidates)
                 {
