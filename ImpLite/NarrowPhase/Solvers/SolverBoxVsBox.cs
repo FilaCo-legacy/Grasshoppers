@@ -7,7 +7,7 @@ namespace ImpLite.NarrowPhase.Solvers
     /// <summary>
     /// An implementation of method that solves collision between two body shaped by<see cref="Box"/>
     /// </summary>
-    internal class SolverBoxvsBox:ISolver
+    internal class SolverBoxVsBox:ISolver
     {
         private RigidBody _bodyA;
         private RigidBody _bodyB;
@@ -51,25 +51,18 @@ namespace ImpLite.NarrowPhase.Solvers
             var xOverlap = ComputeOverlapX();
             var yOverlap = ComputeOverlapY();
 
-            if (xOverlap > 0 && yOverlap > 0)
+            if (!(xOverlap > 0) || !(yOverlap > 0)) return;
+            
+            if (xOverlap < yOverlap)
             {
-                if (xOverlap < yOverlap)
-                {
-                    if (_normal.X < 0)
-                        collider.Normal = new Vector2(-1.0f, 0.0f);
-                    else
-                        collider.Normal = new Vector2(1.0f, 0.0f);
-                }
-                else
-                {
-                    if (_normal.Y < 0)
-                        collider.Normal = new Vector2(0.0f, -1.0f);
-                    else
-                        collider.Normal = new Vector2(0.0f, 1.0f);
-                }
-
-                collider.Penetration = Math.Min(xOverlap, yOverlap);
+                collider.Normal = _normal.X < 0 ? new Vector2(-1.0f, 0.0f) : new Vector2(1.0f, 0.0f);
             }
+            else
+            {
+                collider.Normal = _normal.Y < 0 ? new Vector2(0.0f, -1.0f) : new Vector2(0.0f, 1.0f);
+            }
+
+            collider.Penetration = Math.Min(xOverlap, yOverlap);
         }
     }
 }

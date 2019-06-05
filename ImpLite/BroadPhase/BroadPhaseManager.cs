@@ -8,7 +8,7 @@ namespace ImpLite.BroadPhase
     /// </summary>
     internal class BroadPhaseManager <T> where T: IBoxable
     {
-        private readonly QuadTree<T> _quadTree;
+        private readonly IBoxTree<T> _boxTree;
 
         /// <summary>
         /// Initialize an object of <see cref="BroadPhaseManager{T}"/> with given dimensions
@@ -17,7 +17,7 @@ namespace ImpLite.BroadPhase
         /// <param name="sceneHeight">Height of the scene, which this manager is connected with</param>
         internal BroadPhaseManager(int sceneWidth, int sceneHeight)
         {
-            _quadTree = new QuadTree<T>(0, new Box(0, 0, sceneWidth, sceneHeight));
+            _boxTree = new QuadTree<T>(0, new Box(0, 0, sceneWidth, sceneHeight));
         }
 
         private static void FilterIntersectBoxes(T physObject, List<T> candidates)
@@ -41,7 +41,7 @@ namespace ImpLite.BroadPhase
         public void Execute(IEnumerable<T> objects)
         {
             foreach (var curObject in objects)
-                _quadTree.Insert(curObject);
+                _boxTree.Insert(curObject);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace ImpLite.BroadPhase
         {
             var candidates = new List<T>();
 
-            _quadTree.Retrieve(candidates, physObject);
+            _boxTree.Retrieve(candidates, physObject);
             FilterIntersectBoxes(physObject, candidates);
 
             return candidates;
@@ -64,7 +64,7 @@ namespace ImpLite.BroadPhase
         /// </summary>
         public void Clear()
         {
-            _quadTree.Clear();
+            _boxTree.Clear();
         }
     }
 }

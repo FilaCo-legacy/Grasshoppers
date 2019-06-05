@@ -5,13 +5,13 @@ namespace ImpLite.BroadPhase
     /// <summary>
     /// Data structure "Quadrant tree": https://en.wikipedia.org/wiki/Quadtree
     /// </summary>
-    internal class QuadTree <T> where T:IBoxable
+    internal class QuadTree<T> : IBoxTree<T> where T : IBoxable
     {
         /// <summary>
         /// Maximum number of objects that might be located in one node
         /// </summary>
         public const int MaxObjects = 10;
-        
+
         /// <summary>
         /// Maximum levels that can be created
         /// </summary>
@@ -57,7 +57,8 @@ namespace ImpLite.BroadPhase
 
         private bool IsInTopQuadrants(Box rectangle)
         {
-            return rectangle.LeftUpper.Y < _bounds.Center.Y && (rectangle.LeftUpper.Y + rectangle.Height < _bounds.Center.Y);
+            return rectangle.LeftUpper.Y < _bounds.Center.Y &&
+                   (rectangle.LeftUpper.Y + rectangle.Height < _bounds.Center.Y);
         }
 
         private bool IsInBottomQuadrants(Box rectangle)
@@ -67,7 +68,8 @@ namespace ImpLite.BroadPhase
 
         private bool IsInLeftQuadrants(Box rectangle)
         {
-            return rectangle.LeftUpper.X < _bounds.Center.X && (rectangle.LeftUpper.X + rectangle.Width < _bounds.Center.X);
+            return rectangle.LeftUpper.X < _bounds.Center.X &&
+                   (rectangle.LeftUpper.X + rectangle.Width < _bounds.Center.X);
         }
 
         private bool IsInRightQuadrants(Box rectangle)
@@ -89,16 +91,15 @@ namespace ImpLite.BroadPhase
             {
                 if (IsInTopQuadrants(rectangle))
                     index = 0;
-                else if (IsInBottomQuadrants(rectangle))
-                    index = 3;
+                else if (IsInBottomQuadrants(rectangle)) index = 3;
             }
             else if (IsInLeftQuadrants(rectangle))
             {
                 if (IsInTopQuadrants(rectangle))
                     index = 1;
-                else if (IsInBottomQuadrants(rectangle))
-                    index = 2;
+                else if (IsInBottomQuadrants(rectangle)) index = 2;
             }
+
             return index;
         }
 
@@ -146,23 +147,21 @@ namespace ImpLite.BroadPhase
         /// <param name="obj"></param>
         public void Insert(T obj)
         {
-            if (TryInsertChildren(obj))            
-                return;            
+            if (TryInsertChildren(obj)) return;
 
             _objects.Add(obj);
 
             if (_objects.Count > MaxObjects && _level < MaxLevels)
             {
-                if (!(_nodes[0] is null))
-                    Split();
-                
+                if (!(_nodes[0] is null)) Split();
+
                 var i = 0;
                 while (i < _objects.Count)
                 {
-                    if (TryInsertChildren(_objects[i]))                    
-                        _objects.RemoveAt(i);                    
-                    else                    
-                        i++;                    
+                    if (TryInsertChildren(_objects[i]))
+                        _objects.RemoveAt(i);
+                    else
+                        i++;
                 }
             }
         }
@@ -171,16 +170,14 @@ namespace ImpLite.BroadPhase
         /// Finds objects that are possible to collide with given
         /// </summary>
         /// <param name="targetObj">Target object</param>
-        /// <param name="candidates">List of neighbours</param>
-        public void Retrieve(List<T> candidates, T targetObj)
+        /// <param name="neighbours">List of neighbours</param>
+        public void Retrieve(List<T> neighbours, T targetObj)
         {
             var index = GetIndex(targetObj.GetBox);
-            
-            if (index != -1 && !(_nodes[0] is null))
-                _nodes[index].Retrieve(candidates, targetObj);
 
-            candidates.AddRange(_objects);
+            if (index != -1 && !(_nodes[0] is null)) _nodes[index].Retrieve(neighbours, targetObj);
 
+            neighbours.AddRange(_objects);
         }
     }
 }

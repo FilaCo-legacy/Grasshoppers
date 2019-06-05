@@ -4,8 +4,6 @@ namespace ImpLite.Bodies
 {
     public partial class RigidBody : IMask, IBoxable
     {
-        private float _inverseMass;
-        
         public Vector2 Position { get; set; }
 
         public Vector2 Force { get; set; }
@@ -18,20 +16,20 @@ namespace ImpLite.Bodies
         {
             get
             {
-                if (_inverseMass < ImpParams.GetInstance.Epsilon)
+                if (InverseMass < ImpParams.GetInstance.Epsilon)
                     return 0.0f;
 
                 return 1.0f / InverseMass;
             }
         }
         
-        public float InverseMass => _inverseMass;
+        public float InverseMass { get; private set; }
 
         public bool IsKinematic { get; set; }
 
         public void SetStatic()
         {
-            _inverseMass = 0.0f;
+            InverseMass = 0.0f;
         }
 
         public void ApplyForceToCenter(Vector2 force)
