@@ -36,7 +36,7 @@ namespace ImpLite
             var gravity = ImpParams.GetInstance.Gravity;
             var timeStep = ImpParams.GetInstance.TimeStep;
             
-            body.Velocity += (body.Force * body.InverseMass + gravity) * (timeStep / 2.0f);
+            body.LinearVelocity += (body.Force * body.InverseMass + gravity) * (timeStep / 2.0f);
         }
 
         private static void IntegrateVelocities(RigidBody body)
@@ -48,7 +48,7 @@ namespace ImpLite
             
             IntegrateForces(body);
 
-            body.Position = body.Velocity * timeStep;
+            body.Position = body.LinearVelocity * timeStep;
             
             IntegrateForces(body);
         }

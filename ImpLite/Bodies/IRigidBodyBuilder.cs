@@ -1,5 +1,8 @@
 namespace ImpLite.Bodies
 {
+    /// <summary>
+    /// Provides an interface to build some instance of <see cref="RigidBody"/>
+    /// </summary>
     public interface IRigidBodyBuilder
     {
         void Reset();

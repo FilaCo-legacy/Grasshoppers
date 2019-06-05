@@ -33,13 +33,13 @@ namespace ImpLite.NarrowPhase
 
         private void InfiniteMassCorrection()
         {
-            BodyA.Velocity.Set(0.0f, 0.0f);
-            BodyB.Velocity.Set(0.0f, 0.0f);
+            BodyA.LinearVelocity.Set(0.0f, 0.0f);
+            BodyB.LinearVelocity.Set(0.0f, 0.0f);
         }
 
         private Vector2 ComputeImpulse()
         {
-            var relativeVelocity = BodyB.Velocity - BodyA.Velocity;
+            var relativeVelocity = BodyB.LinearVelocity - BodyA.LinearVelocity;
 
             var contactVelocity = Vector2.DotProduct(relativeVelocity, Normal);
 
@@ -56,7 +56,7 @@ namespace ImpLite.NarrowPhase
 
         private Vector2 ComputeFrictionImpulse(float absImpulse)
         {
-            var relativeVelocity = BodyB.Velocity - BodyA.Velocity;   
+            var relativeVelocity = BodyB.LinearVelocity - BodyA.LinearVelocity;   
             var invMassSum = BodyA.InverseMass + BodyB.InverseMass;
             
             var tangent = relativeVelocity - Normal * Vector2.DotProduct(Normal, relativeVelocity);
@@ -97,7 +97,7 @@ namespace ImpLite.NarrowPhase
 
             for (var i = 0; i < ContactNumber; ++i)
             {
-                var relativeVelocity = BodyB.Velocity - BodyA.Velocity;
+                var relativeVelocity = BodyB.LinearVelocity - BodyA.LinearVelocity;
 
                 var timeStep = ImpParams.GetInstance.TimeStep;
                 var gravity = ImpParams.GetInstance.Gravity;
