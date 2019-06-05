@@ -1,10 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{3574663A-BB79-40F4-887C-185879CC0BF2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImpLite", "ImpLite\ImpLite.csproj", "{D4860B31-411F-4E25-BD6D-C7C84284D481}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameServer", "GameServer\GameServer.csproj", "{32B7B72B-C3C3-49E2-A890-0C9880207D2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,17 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3574663A-BB79-40F4-887C-185879CC0BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3574663A-BB79-40F4-887C-185879CC0BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3574663A-BB79-40F4-887C-185879CC0BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3574663A-BB79-40F4-887C-185879CC0BF2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D4860B31-411F-4E25-BD6D-C7C84284D481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D4860B31-411F-4E25-BD6D-C7C84284D481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4860B31-411F-4E25-BD6D-C7C84284D481}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4860B31-411F-4E25-BD6D-C7C84284D481}.Release|Any CPU.Build.0 = Release|Any CPU
-		{32B7B72B-C3C3-49E2-A890-0C9880207D2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32B7B72B-C3C3-49E2-A890-0C9880207D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32B7B72B-C3C3-49E2-A890-0C9880207D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32B7B72B-C3C3-49E2-A890-0C9880207D2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
