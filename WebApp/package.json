@@ -1,0 +1,14 @@
+{
+  "name": "platformer_royal_battle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dmitry Chizha",
+  "license": "MIT",
+  "dependencies": {
+    "pixi.js": "^5.0.3"
+  }
+}
