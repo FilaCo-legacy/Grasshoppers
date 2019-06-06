@@ -3,7 +3,7 @@ using WebApp.Models;
 
 namespace WebApp.SampleData
 {
-    public static class SampleData
+    public static class SampleDataPlayers
     {
         public static void Initialize(InventoryContext context)
         {
