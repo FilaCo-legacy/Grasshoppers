@@ -24,7 +24,7 @@ namespace ImpLite.NarrowPhase
         
         public ISolver Solver { get; set; }
 
-        public Collider(RigidBody bodyA, RigidBody bodyB)
+        public Collider(IBody bodyA, IBody bodyB)
         {
             BodyA = bodyA;
             BodyB = bodyB;

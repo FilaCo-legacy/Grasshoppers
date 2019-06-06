@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using ImpLite.Bodies;
+using ImpLite.NarrowPhase.Solvers;
 
 namespace ImpLite.NarrowPhase
 {
@@ -10,10 +10,13 @@ namespace ImpLite.NarrowPhase
 
         private readonly List<ICollider> _contacts;
 
+        private readonly SolverBoxVsBox _solver;
+
         public NarrowPhaseManager()
         {
             _hashTable = new HashTable<ICollider>();
             _contacts = new List<ICollider>();
+            _solver = new SolverBoxVsBox();
         }
 
         private void Initialize()
@@ -56,6 +59,8 @@ namespace ImpLite.NarrowPhase
             
             if (_hashTable.Contains(collider) || _hashTable.Contains(reverseCollider))
                 return;
+            
+            _solver.ResolveCollision(collider);
             
             _hashTable.Add(collider);
             _contacts.Add(collider);
