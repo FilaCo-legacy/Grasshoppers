@@ -21,6 +21,9 @@
       <Compile Update="Models\ItemRarity.cs">
         <DependentUpon>Item.cs</DependentUpon>
       </Compile>
+      <Compile Update="Models\ItemConfiguration.cs">
+        <DependentUpon>Item.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

@@ -7,7 +7,7 @@ namespace WebApp.Models
     {
         public int Id { get; set; }
         
-        [Required, MaxLength(50)]
+        [Required, MaxLength(50), MinLength(3)]
         public string Name { get; set; }
         
         [Required]
@@ -16,11 +16,11 @@ namespace WebApp.Models
         [Required]
         public string SpritePath { get; set; }
         
-//        public ICollection<Player> Players { get; set; }
-//
-//        public Item()
-//        {
-//            Players = new List<Player>();
-//        }
+        public ICollection<ItemsPlayers> Owners { get; set; }
+
+        public Item()
+        {
+            Owners = new List<ItemsPlayers>();
+        }
     }
 }
