@@ -12,6 +12,9 @@
       <Compile Update="Bodies\RigidBody.IMask.cs">
         <DependentUpon>RigidBody.cs</DependentUpon>
       </Compile>
+      <Compile Update="NarrowPhase\HashEntry.cs">
+        <DependentUpon>HashTable.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

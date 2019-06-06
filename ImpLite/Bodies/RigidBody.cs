@@ -5,7 +5,7 @@ namespace ImpLite.Bodies
     /// <summary>
     /// Represents some body's model in the physics engine
     /// </summary>
-    public partial class RigidBody : IMask, IBoxable
+    public partial class RigidBody : IBody, IMask, IBoxable
     {
         /// <summary>
         /// Coords of the material point

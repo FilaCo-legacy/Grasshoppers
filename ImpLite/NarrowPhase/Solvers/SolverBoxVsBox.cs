@@ -9,15 +9,15 @@ namespace ImpLite.NarrowPhase.Solvers
     /// </summary>
     internal class SolverBoxVsBox:ISolver
     {
-        private RigidBody _bodyA;
-        private RigidBody _bodyB;
+        private IBody _bodyA;
+        private IBody _bodyB;
         
         private Vector2 _normal;
         
         private Box _boxA;
         private Box _boxB;
         
-        private void Initialize(Collider collider)
+        private void Initialize(ICollider collider)
         {
             _bodyA = collider.BodyA;
             _bodyB = collider.BodyB;

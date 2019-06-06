@@ -4,15 +4,15 @@ using ImpLite.NarrowPhase.Solvers;
 
 namespace ImpLite.NarrowPhase
 {
-    public class Collider : IEquatable<Collider>
+    public class Collider : ICollider
     {
         private float _mixedRestitution;
         private float _mixedStaticFriction;
         private float _mixedDynamicFriction;
         
-        public RigidBody BodyA { get; }
+        public IBody BodyA { get; }
         
-        public RigidBody BodyB { get; }
+        public IBody BodyB { get; }
 
         public float Penetration { get; set; }
         
@@ -130,7 +130,7 @@ namespace ImpLite.NarrowPhase
             }
         }
 
-        public bool Equals(Collider other)
+        public bool Equals(ICollider other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -141,8 +141,8 @@ namespace ImpLite.NarrowPhase
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((Collider) obj);
+            
+            return obj.GetType() == this.GetType() && Equals((Collider) obj);
         }
 
         public override int GetHashCode()
