@@ -13,11 +13,11 @@ namespace WebApp.Models
         [Required]
         public string SpritePath { get; set; }
         
-        public ICollection<Item> Items { get; set; }
-
-        public Player()
-        {
-            Items = new List<Item>();
-        }
+//        public ICollection<Item> Items { get; set; }
+//
+//        public Player()
+//        {
+//            Items = new List<Item>();
+//        }
     }
 }

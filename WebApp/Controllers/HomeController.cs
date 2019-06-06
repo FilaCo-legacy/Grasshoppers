@@ -10,9 +10,16 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly InventoryContext _inventoryContext;
+
+        public HomeController(InventoryContext inventoryContext)
+        {
+            _inventoryContext = inventoryContext;
+        }
+        
         public IActionResult Index()
         {
-            return View();
+            return View(_inventoryContext.Players.ToList());
         }
 
         public IActionResult Privacy()

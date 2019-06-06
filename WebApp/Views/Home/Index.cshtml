@@ -1,8 +1,30 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<Player>
+@{
+    ViewData["Title"] = "List of players";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+ 
+<html>
+<head>
+</head>
+
+<body>
+    <h3>Players</h3>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>SpritePath</td>
+            <td></td>
+        </tr>
+        @foreach (var curPlayer in Model)
+            {
+            <tr>
+                <td>@curPlayer.Name</td>
+                <td>@curPlayer.SpritePath</td>
+                <td><a href="~/Home/Players/@curPlayer.Id">View</a></td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
