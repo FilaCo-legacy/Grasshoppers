@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Models
 {
-    public class ItemsPlayers
+    public class InventoryEntry
     {
         public int Id { get; set; }
         
@@ -11,7 +11,7 @@ namespace WebApp.Models
         public int ItemId { get; set; }
         
         [ForeignKey("PlayerId")]
-        public Player Owner { get; set; }
+        public Character Owner { get; set; }
         
         [ForeignKey("ItemId")]
         public Item Item { get; set; }

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace WebApp.Models
 {
-    public class PlayerConfiguration : IEntityTypeConfiguration <Player>
+    public class PlayerConfiguration : IEntityTypeConfiguration <Character>
     {
-        public void Configure(EntityTypeBuilder<Player> builder)
+        public void Configure(EntityTypeBuilder<Character> builder)
         {
             builder.HasAlternateKey(curPlayer => curPlayer.Name);
             
