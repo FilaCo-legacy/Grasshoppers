@@ -4,12 +4,26 @@ namespace WebApp.Models
 {
     public sealed class PlatformerContext : DbContext
     {
-        public DbSet<InventoryEntry> ItemsPlayers { get; set; }
+        public DbSet<InventoryEntry> Inventories { get; set; }
         
         public DbSet <Item> Items { get; set; }
         
-        public DbSet <Character> Players { get; set; }
-
+        public DbSet <Character> Characters { get; set; }
+        
+        public DbSet<GameSession> GameSessions { get; set; }
+        
+        public DbSet<Mission> Missions { get; set; }
+        
+        public DbSet<Map> Maps { get; set; }
+        
+        public DbSet<CharacterResultEntry> CharactersResults { get; set; }
+        
+        public PlatformerContext(DbContextOptions options)
+            : base(options)
+        {
+            Database.EnsureCreated();
+        }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ItemConfiguration());
@@ -18,12 +32,6 @@ namespace WebApp.Models
             modelBuilder.ApplyConfiguration(new CharacterResultEntryConfiguration());
             
             base.OnModelCreating(modelBuilder);
-        }
-        
-        public PlatformerContext(DbContextOptions options)
-            : base(options)
-        {
-            Database.EnsureCreated();
         }
     }
 }
