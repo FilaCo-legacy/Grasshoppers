@@ -14,6 +14,8 @@ namespace WebApp.Models
         {
             modelBuilder.ApplyConfiguration(new ItemConfiguration());
             modelBuilder.ApplyConfiguration(new PlayerConfiguration());
+            modelBuilder.ApplyConfiguration(new MissionConfiguration());
+            
             base.OnModelCreating(modelBuilder);
         }
         

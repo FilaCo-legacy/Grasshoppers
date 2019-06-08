@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace WebApp.Models
 {
     /// <summary>
-    /// Contains the map information in database
+    /// Represents the map information in the database
     /// </summary>
     public class Map
     {

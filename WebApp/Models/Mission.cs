@@ -3,20 +3,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Models
 {
+    /// <summary>
+    /// Represents an info about mission in the database
+    /// </summary>
     public class Mission
     {
         public int Id { get; set; }
         
-        /// <summary>
-        /// A unique name of this <see cref="Mission"/>
-        /// </summary>
         [Required, MaxLength(50), MinLength(2)]
         public string Name { get; set; }
         
         public int MapId { get; set; }
         
         /// <summary>
-        /// A <see cref="Map"/> for this <see cref="Mission"/>
+        /// Map that used in this mission
         /// </summary>
         [ForeignKey("MapId")]
         public Map MissionMap { get; set; }
@@ -30,7 +30,11 @@ namespace WebApp.Models
         /// <summary>
         /// A number of stunned <see cref="Character"/>s that participators have to get
         /// </summary>
-        [Required]
-        public int TargetScore { get; set; }
+        public int? TargetScore { get; set; }
+        
+        /// <summary>
+        /// A number of flags that team have to get to win this mission
+        /// </summary>
+        public int? TargetCapturedFlags { get; set; }
     }
 }
