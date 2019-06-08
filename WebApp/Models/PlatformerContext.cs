@@ -10,10 +10,11 @@ namespace WebApp.Models
         
         public DbSet <Player> Players { get; set; }
 
-//        protected override void OnModelCreating(ModelBuilder modelBuilder)
-//        {
-//            //modelBuilder.ApplyConfiguration(new ItemConfiguration());
-//        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new ItemConfiguration());
+            modelBuilder.ApplyConfiguration(new PlayerConfiguration());
+        }
         
         public PlatformerContext(DbContextOptions options)
             : base(options)

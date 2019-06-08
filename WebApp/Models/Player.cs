@@ -11,6 +11,9 @@ namespace WebApp.Models
         public string Name { get; set; }
         
         [Required]
+        public PlayerGender Gender { get; set; }
+        
+        [Required]
         public string SpritePath { get; set; }
         
         public ICollection<ItemsPlayers> Inventory { get; set; }

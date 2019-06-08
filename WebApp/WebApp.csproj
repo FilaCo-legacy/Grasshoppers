@@ -27,6 +27,9 @@
       <Compile Update="Models\PlayerConfiguration.cs">
         <DependentUpon>Player.cs</DependentUpon>
       </Compile>
+      <Compile Update="Models\PlayerGender.cs">
+        <DependentUpon>Player.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 
@@ -43,6 +46,11 @@
       <Reference Include="Imp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
         <HintPath>bin\Debug\netcoreapp2.2\Imp.dll</HintPath>
       </Reference>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Folder Include="SampleData" />
     </ItemGroup>
 
 </Project>

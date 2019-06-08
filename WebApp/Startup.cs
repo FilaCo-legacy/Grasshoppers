@@ -37,7 +37,7 @@ namespace WebApp
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<InventoryContext>(options => options.UseNpgsql(connectionString));
+            services.AddDbContext<PlatformerContext>(options => options.UseNpgsql(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
