@@ -3,8 +3,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApp.Models
 {
+    /// <summary>
+    /// Represents an item in the database
+    /// </summary>
     public class Item
     {
+        [Required]
+        internal string Sprite { get; private set; }
+        
         public int Id { get; set; }
         
         [Required, MaxLength(50), MinLength(2)]
@@ -13,14 +19,14 @@ namespace WebApp.Models
         [Required]
         public ItemRarity Rarity { get; set; }
         
-        [Required]
-        public string SpritePath { get; set; }
-        
-        public ICollection<ItemsPlayers> Owners { get; set; }
+        /// <summary>
+        /// Stores inventory entries which include this item
+        /// </summary>
+        public ICollection<InventoryEntry> InventoryEntries{ get; set; }
 
         public Item()
         {
-            Owners = new List<ItemsPlayers>();
+            InventoryEntries = new List<InventoryEntry>();
         }
     }
 }
