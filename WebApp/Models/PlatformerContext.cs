@@ -4,16 +4,17 @@ namespace WebApp.Models
 {
     public sealed class PlatformerContext : DbContext
     {
-        public DbSet<ItemsPlayers> ItemsPlayers { get; set; }
+        public DbSet<InventoryEntry> ItemsPlayers { get; set; }
         
         public DbSet <Item> Items { get; set; }
         
-        public DbSet <Player> Players { get; set; }
+        public DbSet <Character> Players { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ItemConfiguration());
             modelBuilder.ApplyConfiguration(new PlayerConfiguration());
+            base.OnModelCreating(modelBuilder);
         }
         
         public PlatformerContext(DbContextOptions options)

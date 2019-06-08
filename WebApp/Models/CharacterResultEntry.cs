@@ -6,7 +6,7 @@ namespace WebApp.Models
     /// <summary>
     /// Class that contains information about participator results in some <see cref="GameSession"/>
     /// </summary>
-    public class PlayerResultEntry
+    public class CharacterResultEntry
     {
         [Key,Column(Order = 1)] 
         public int PlayerId { get; set; }
