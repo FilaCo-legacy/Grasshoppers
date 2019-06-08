@@ -8,6 +8,8 @@ namespace WebApp.Models
     {
         public void Configure(EntityTypeBuilder<Item> builder)
         {
+            builder.HasAlternateKey(curItem => curItem.Name);
+            
             builder
                 .Property(curItem => curItem.Rarity)
                 .HasConversion(property => property.ToString(),

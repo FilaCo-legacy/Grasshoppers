@@ -3,28 +3,22 @@
     ViewData["Title"] = "List of players";
 }
 
-<!DOCTYPE html>
- 
-<html>
-<head>
-</head>
 
-<body>
-    <h3>Players</h3>
-    <table>
+<h3>Players</h3>
+<table class = "table-condensed">
+    <tr>
+        <td>Name</td>
+        <td>SpritePath</td>
+        <td></td>
+    </tr>
+    @foreach (var curPlayer in Model)
+    {
         <tr>
-            <td>Name</td>
-            <td>SpritePath</td>
-            <td></td>
+            <td>@curPlayer.Name</td>
+            <td>@curPlayer.SpritePath</td>
+            <td>
+                <a href="~/Home/Players/@curPlayer.Id">View</a>
+            </td>
         </tr>
-        @foreach (var curPlayer in Model)
-            {
-            <tr>
-                <td>@curPlayer.Name</td>
-                <td>@curPlayer.SpritePath</td>
-                <td><a href="~/Home/Players/@curPlayer.Id">View</a></td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+    }
+</table>

@@ -24,6 +24,25 @@
       <Compile Update="Models\ItemConfiguration.cs">
         <DependentUpon>Item.cs</DependentUpon>
       </Compile>
+      <Compile Update="Models\PlayerConfiguration.cs">
+        <DependentUpon>Player.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <TypeScriptCompile Include="wwwroot\node_modules\eventemitter3\index.d.ts" />
+      <TypeScriptCompile Include="wwwroot\node_modules\mini-signals\typings\mini-signals.d.ts" />
+      <TypeScriptCompile Include="wwwroot\node_modules\pixi.js\pixi.js.d.ts" />
+      <TypeScriptCompile Include="wwwroot\node_modules\resource-loader\typings\mini-signals.d.ts" />
+      <TypeScriptCompile Include="wwwroot\node_modules\resource-loader\typings\resource-loader.d.ts" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Reference Include="Imp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>bin\Debug\netcoreapp2.2\Imp.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@ namespace WebApp.Models
         
         public DbSet<Item> Items { get; set; }
         
-        public InventoryContext(DbContextOptions<InventoryContext> options)
+        public InventoryContext(DbContextOptions options)
             : base(options)
         {
             Database.EnsureCreated();
