@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WebApp.Models
 {
     /// <summary>
-    /// Contains info about some game session in the app
+    /// Represents info about some game session in the database
     /// </summary>
     public class GameSession
     {
@@ -30,16 +30,16 @@ namespace WebApp.Models
         /// Type of mission played
         /// </summary>
         [ForeignKey("MissionId")]
-        public Mission GsMission { get; set; }
+        public Mission Mission { get; set; }
 
         /// <summary>
         /// Results of each participated <see cref="Character"/>
         /// </summary>
-        public ICollection<CharacterResultEntry> PlayerResults { get; set; }
+        public ICollection<CharacterResultEntry> ParticipatorsResults { get; set; }
 
         public GameSession()
         {
-            PlayerResults = new List<CharacterResultEntry>();
+            ParticipatorsResults = new List<CharacterResultEntry>();
         }
     }
 }
