@@ -12,7 +12,10 @@
         <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0-preview5.19227.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0-preview5.19227.1" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0-preview5.19227.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.1.0-preview1-final" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.0.0-preview5" />
     </ItemGroup>
 
@@ -24,11 +27,17 @@
       <Compile Update="Models\ItemConfiguration.cs">
         <DependentUpon>Item.cs</DependentUpon>
       </Compile>
-      <Compile Update="Models\PlayerConfiguration.cs">
+      <Compile Update="Models\CharacterConfiguration.cs">
         <DependentUpon>Player.cs</DependentUpon>
       </Compile>
-      <Compile Update="Models\PlayerGender.cs">
+      <Compile Update="Models\CharacterGender.cs">
         <DependentUpon>Player.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Models\MissionConfiguration.cs">
+        <DependentUpon>Mission.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Models\CharacterResultEntryConfiguration.cs">
+        <DependentUpon>CharacterResultEntry.cs</DependentUpon>
       </Compile>
     </ItemGroup>
 
@@ -50,7 +59,7 @@
 
 
     <ItemGroup>
-      <Folder Include="SampleData" />
+      <ProjectReference Include="..\GameServer\GameServer.csproj" />
     </ItemGroup>
 
 </Project>

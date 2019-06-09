@@ -16,6 +16,11 @@ namespace WebApp.Models
         [Required, MaxLength(50), MinLength(2)]
         public string Name { get; set; }
         
+        /// <summary>
+        /// Some important info about this item
+        /// </summary>
+        public string Description { get; set; }
+        
         [Required]
         public ItemRarity Rarity { get; set; }
         
