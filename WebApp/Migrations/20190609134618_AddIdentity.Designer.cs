@@ -10,7 +10,7 @@ using WebApp.Models;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(GrasshoppersContext))]
-    [Migration("20190609101520_AddIdentity")]
+    [Migration("20190609134618_AddIdentity")]
     partial class AddIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
