@@ -39,7 +39,15 @@ namespace WebApp
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<GrasshoppersContext>(options => options.UseNpgsql(connectionString));
 
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<GrasshoppersContext>();
+            services.AddIdentity<User, IdentityRole>(options=> {
+                    options.Password.RequiredLength = 5;   
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false; 
+                    options.Password.RequireDigit = false;
+                })
+                .AddEntityFrameworkStores<GrasshoppersContext>()
+                .AddDefaultTokenProviders();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
