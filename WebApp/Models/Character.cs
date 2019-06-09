@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApp.Models
 {
@@ -34,6 +35,11 @@ namespace WebApp.Models
         /// </summary>
         [Required]
         public DateTime LastTimeOnline { get; set; }
+        
+        public int UserId { get; set; }
+        
+        [ForeignKey("UserId")]
+        public User Owner { get; set; }
         
         public ICollection<InventoryEntry> Inventory { get; set; }
         

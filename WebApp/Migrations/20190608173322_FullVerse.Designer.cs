@@ -6,10 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebApp.Models;
+using AppContext = WebApp.Models.AppContext;
 
 namespace WebApp.Migrations
 {
-    [DbContext(typeof(PlatformerContext))]
+    [DbContext(typeof(AppContext))]
     [Migration("20190608173322_FullVerse")]
     partial class FullVerse
     {

@@ -10,6 +10,9 @@
         <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.CookiePolicy" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0-preview5.19227.1" />
@@ -28,10 +31,10 @@
         <DependentUpon>Item.cs</DependentUpon>
       </Compile>
       <Compile Update="Models\CharacterConfiguration.cs">
-        <DependentUpon>Player.cs</DependentUpon>
+        <DependentUpon>Character.cs</DependentUpon>
       </Compile>
       <Compile Update="Models\CharacterGender.cs">
-        <DependentUpon>Player.cs</DependentUpon>
+        <DependentUpon>Character.cs</DependentUpon>
       </Compile>
       <Compile Update="Models\MissionConfiguration.cs">
         <DependentUpon>Mission.cs</DependentUpon>
@@ -60,6 +63,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GameServer\GameServer.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Folder Include="ViewModels" />
     </ItemGroup>
 
 </Project>

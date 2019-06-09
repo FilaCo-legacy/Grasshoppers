@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.Models
 {
-    public sealed class PlatformerContext : DbContext
+    public sealed class AppContext : IdentityDbContext<User>
     {
         public DbSet<InventoryEntry> Inventories { get; set; }
         
@@ -18,7 +19,7 @@ namespace WebApp.Models
         
         public DbSet<CharacterResultEntry> CharactersResults { get; set; }
         
-        public PlatformerContext(DbContextOptions options)
+        public AppContext(DbContextOptions options)
             : base(options)
         {
             Database.EnsureCreated();

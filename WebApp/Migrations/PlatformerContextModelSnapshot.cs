@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebApp.Models;
+using AppContext = WebApp.Models.AppContext;
 
 namespace WebApp.Migrations
 {
-    [DbContext(typeof(PlatformerContext))]
+    [DbContext(typeof(AppContext))]
     partial class PlatformerContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

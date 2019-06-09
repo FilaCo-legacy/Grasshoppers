@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using WebApp.Models;
+using AppContext = WebApp.Models.AppContext;
 
 namespace WebApp
 {
@@ -37,7 +38,7 @@ namespace WebApp
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<PlatformerContext>(options => options.UseNpgsql(connectionString));
+            services.AddDbContext<AppContext>(options => options.UseNpgsql(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
