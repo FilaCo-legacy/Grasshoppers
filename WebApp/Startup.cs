@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using WebApp.Models;
-using AppContext = WebApp.Models.AppContext;
 
 namespace WebApp
 {
@@ -37,8 +37,10 @@ namespace WebApp
             });
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<GrasshoppersContext>(options => options.UseNpgsql(connectionString));
 
-            services.AddDbContext<AppContext>(options => options.UseNpgsql(connectionString));
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<GrasshoppersContext>();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -59,6 +61,8 @@ namespace WebApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

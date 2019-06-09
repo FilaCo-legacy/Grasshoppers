@@ -8,7 +8,7 @@ using WebApp.Models;
 
 namespace WebApp.Migrations
 {
-    [DbContext(typeof(AppContext))]
+    [DbContext(typeof(GrasshoppersContext))]
     [Migration("20190608095957_ItemsAndPlayers")]
     partial class ItemsAndPlayers
     {

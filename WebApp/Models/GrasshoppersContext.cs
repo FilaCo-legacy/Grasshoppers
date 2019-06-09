@@ -3,8 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.Models
 {
-    public sealed class AppContext : IdentityDbContext<User>
+    public sealed class GrasshoppersContext : IdentityDbContext<User>
     {
+        private readonly DbContextOptions<GrasshoppersContext> _options;
         public DbSet<InventoryEntry> Inventories { get; set; }
         
         public DbSet <Item> Items { get; set; }
@@ -19,9 +20,10 @@ namespace WebApp.Models
         
         public DbSet<CharacterResultEntry> CharactersResults { get; set; }
         
-        public AppContext(DbContextOptions options)
+        public GrasshoppersContext(DbContextOptions<GrasshoppersContext> options)
             : base(options)
         {
+            _options = options;
             Database.EnsureCreated();
         }
         
