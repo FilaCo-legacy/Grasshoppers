@@ -1,18 +1,16 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    Layout = null;
 }
- 
- 
-@if(User.Identity.IsAuthenticated)
-{
-    <p>@User.Identity.Name</p>
- 
-    <form method="post" asp-controller="Account" asp-action="LogOff">
-        <input type="submit" value="Выход" />
-    </form>
-}
-else
-{
-    <a asp-controller="Account" asp-action="Login">Sign in</a>
-    <a asp-controller="Account" asp-action="SignUp">Sign up</a>
-}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Hello, world!</title>
+</head>
+<body>
+<div>
+      
+</div>
+</body>
+</html>

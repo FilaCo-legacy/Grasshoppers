@@ -1,8 +1,7 @@
-@model LoginViewModel
+@model WebApp.Areas.Identity.ViewModels.LoginViewModel
 
 @{
     ViewBag.Title = "title";
-    Layout = "_Layout";
 }
 
 <h2>Log in</h2>
@@ -20,7 +19,7 @@
         <span asp-validation-for="Password"></span>
     </div>
     <div>
-        <label asp-for="RememberMe"></label><br />
+        <label asp-for="RememberMe">Remember me</label><br />
         <input asp-for="RememberMe" />
     </div>
     <div>

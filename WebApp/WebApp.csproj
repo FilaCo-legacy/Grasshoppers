@@ -65,4 +65,14 @@
       <ProjectReference Include="..\GameServer\GameServer.csproj" />
     </ItemGroup>
 
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Identity\Views\Account\Login.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Identity\Views\Account\SignUp.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Identity\Views\_ViewImports.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Identity\Views\_ViewStart.cshtml" />
+    </ItemGroup>
+
 </Project>
