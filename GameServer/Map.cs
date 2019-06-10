@@ -1,4 +1,7 @@
-$HEADER$namespace $NAMESPACE$
+namespace GameServer
 {
-  public class $CLASS$ {$END$}
+    public class Map
+    {
+        
+    }
 }
