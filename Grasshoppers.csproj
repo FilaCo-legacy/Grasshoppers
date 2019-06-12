@@ -29,9 +29,7 @@
 
 
     <ItemGroup>
-      <Folder Include="Areas\Identity\Controllers" />
-      <Folder Include="Areas\Identity\Models" />
-      <Folder Include="Areas\Identity\Views" />
+      <Folder Include="Areas\Identity\Views\Shared" />
     </ItemGroup>
 
 </Project>
