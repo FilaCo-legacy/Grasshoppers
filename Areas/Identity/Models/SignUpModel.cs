@@ -19,6 +19,7 @@ namespace Grasshoppers.Areas.Identity.Models
  
         [Required]
         [Compare("Password", ErrorMessage = "Passwords are not equal")]
+        [DisplayName("Confirm password")]
         [DataType(DataType.Password)]
         public string PasswordConfirm { get; set; }
     }
