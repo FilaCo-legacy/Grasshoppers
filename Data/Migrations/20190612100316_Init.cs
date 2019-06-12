@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Grasshoppers.Migrations
+namespace Grasshoppers.Data.Migrations
 {
     public partial class Init : Migration
     {
