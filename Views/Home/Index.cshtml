@@ -1,19 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@if (User.Identity.IsAuthenticated)
-    {
-    }
-    else
-    {
-        <div class="jumbotron bg-transparent py-6">
-            <div class="row">
-                <div class="col-md-7">
-                    <h1 class="text-white mb-3">Try it</h1>
-                </div>
-                <div class="col-md-5">
-                    @{await Html.RenderPartialAsync("_SignUpPartial");}
-                </div>
-            </div>
+
+<div class="row pt-4 px-5">
+    <div class="col-md-7 py-4 px-4">
+        <h1>Try it today</h1>
+        <p class="lead">A brand-new online game Grasshoppers. Hope you enjoy!</p>
+    </div>
+    
+    <div class="col-md-5 py-4 px-4">
+        <div class="jumbotron py-4 px-4">
+            @{ await Html.RenderPartialAsync("_SignUpPartial");}
         </div>
-    }
+    </div>
+</div>
+    

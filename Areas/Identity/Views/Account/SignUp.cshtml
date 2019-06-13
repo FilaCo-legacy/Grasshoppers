@@ -1,29 +1,28 @@
 @model SignUpModel
 
-<form method="post" asp-controller="Account" asp-action="SignUp">
-    <div asp-validation-summary="ModelOnly"></div>
+@{
+    ViewData["Title"] = "Sign up";
+}
 
-    <div>
-        <label asp-for="Email"></label><br/>
-        <input asp-for="Email"/>
-        <span asp-validation-for="Email"></span>
+<div class="row pt-4 px-5">
+    <div class="col-md-12">
+        <div class="jumbotron" style="background-color: aliceblue">
+            <h1>Join Grasshoppers</h1>
+            <p>Create a new account</p>
+        </div>
+        </div>
+</div>
+
+<div class="row pb-4 px-5">
+    <div class="col-md-5">
+        <div class="jumbotron py-4 px-4" style="background-color: aliceblue">
+            @{ await Html.RenderPartialAsync("_SignUpPartial");}
+        </div>
     </div>
-    <div>
-        <label asp-for="UserName"></label><br/>
-        <input asp-for="UserName"/>
-        <span asp-validation-for="UserName"></span>
+    <div class="col-md-7">
+        <div class="jumbotron py-4 px-4" style="background-color: aliceblue">
+            <div asp-validation-summary="ModelOnly"></div>
+        </div>
+        
     </div>
-    <div>
-        <label asp-for="Password"></label><br/>
-        <input asp-for="Password"/>
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <label asp-for="PasswordConfirm"></label><br/>
-        <input asp-for="PasswordConfirm"/>
-        <span asp-validation-for="PasswordConfirm"></span>
-    </div>
-    <div>
-        <input type="submit" value="Sign up for Grasshoppers"/>
-    </div>
-</form>
+</div>

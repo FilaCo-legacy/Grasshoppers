@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html style="background-color: powderblue">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -36,13 +36,11 @@
         </div>
     </nav>
 </header>
-<div style="background-color: powderblue">
-    <div class="container">
-        <partial name="_CookieConsentPartial"/>
-        <main role="main" class="pb-3">
+<div class="container-fluid" style="background-color: powderblue">
+    <partial name="_CookieConsentPartial"/>
+        <main role="main" class="">
             @RenderBody()
         </main>
-    </div>
 </div>
 <footer class="border-top footer text-muted" style="background-color: aliceblue">
     <div class="container">

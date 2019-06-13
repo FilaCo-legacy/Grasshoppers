@@ -25,6 +25,21 @@
       <Compile Update="Data\MissionConfiguration.cs">
         <DependentUpon>Mission.cs</DependentUpon>
       </Compile>
+      <Compile Update="Data\CharacterConfiguration.cs">
+        <DependentUpon>Character.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Data\CharacterGender.cs">
+        <DependentUpon>Character.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Data\CharacterResultEntryConfiguration.cs">
+        <DependentUpon>CharacterResultEntry.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Data\ItemConfiguration.cs">
+        <DependentUpon>Item.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Data\ItemRarity.cs">
+        <DependentUpon>Item.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 
