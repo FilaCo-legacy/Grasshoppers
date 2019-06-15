@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html style="background-color: powderblue">
 <head>
     <meta charset="utf-8"/>
@@ -18,30 +18,14 @@
     <link rel="stylesheet" href="~/css/site.css"/>
 </head>
 <body>
-<header style="background-color: steelblue">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-          <a class="navbar-brand" asp-area="" asp-action="Index" asp-controller="Home">Grasshoppers</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            
-            <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link text-light" asp-area="" asp-action="Index" asp-controller="Home">Who is online?</a>
-            </div>
 
-            @await Html.PartialAsync("_LoginPartial")
-
-        </div>
-    </nav>
-</header>
 <div class="container-fluid" style="background-color: powderblue">
     <partial name="_CookieConsentPartial"/>
     <main role="main" class="">
         @RenderBody()
     </main>
 </div>
+
 <footer class="border-top footer text-muted" style="background-color: aliceblue">
     <div class="container">
         &copy; @DateTime.Now.Year - Grasshoppers

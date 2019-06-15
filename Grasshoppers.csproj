@@ -42,9 +42,4 @@
       </Compile>
     </ItemGroup>
 
-
-    <ItemGroup>
-      <Folder Include="Areas\Identity\Views\Shared" />
-    </ItemGroup>
-
 </Project>

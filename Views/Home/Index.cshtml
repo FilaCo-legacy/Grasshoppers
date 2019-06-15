@@ -2,16 +2,24 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="row pt-4 px-5">
-    <div class="col-md-7 py-4 px-4">
-        <h1>Try it today</h1>
-        <p class="lead">A brand-new online game Grasshoppers. Hope you enjoy!</p>
-    </div>
-    
-    <div class="col-md-5 py-4 px-4">
-        <div class="jumbotron py-4 px-4">
-            @{ await Html.RenderPartialAsync("_SignUpPartial");}
+@if (User.Identity.IsAuthenticated)
+{
+    <p>@User.Identity.Name</p>
+
+}
+else
+{
+    <div class="row pt-4 px-5">
+        <div class="col-md-7 py-4 px-4">
+            <h1>Try it today</h1>
+            <p class="lead">A brand-new online game Grasshoppers. Hope you enjoy!</p>
+        </div>
+
+        <div class="col-md-5 py-4 px-4">
+            <div class="jumbotron py-4 px-4">
+                @{ await Html.RenderPartialAsync("_SignUpPartial"); }
+            </div>
         </div>
     </div>
-</div>
+}
     
