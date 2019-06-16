@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html style="background-color: powderblue">
+<html lang="en" style="background-color: powderblue">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -16,37 +16,48 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
     </environment>
     <link rel="stylesheet" href="~/css/site.css"/>
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 </head>
+
 <body>
-<header style="background-color: steelblue">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-          <a class="navbar-brand" asp-area="" asp-action="Index" asp-controller="Home">Grasshoppers</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+
+<div class="wrapper">
+    @await Html.PartialAsync("_SidebarPartial")
+    
+    <div id="content">
         
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            
-            <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link text-light" asp-area="" asp-action="Index" asp-controller="Home">Who is online?</a>
-            </div>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" asp-area="" asp-action="Index" asp-controller="Home">Grasshoppers</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            @await Html.PartialAsync("_LoginPartial")
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link text-light" asp-area="" asp-action="Index" asp-controller="Home">Who is online?</a>
+                    </div>
+
+                    @await Html.PartialAsync("_LoginPartial")
+
+                </div>
+            </nav>
+        </header>
+        
+        <div class="container-fluid" style="background-color: powderblue">
+            <partial name="_CookieConsentPartial"/>
+            <main role="main" class="">
+                @RenderBody()
+            </main>
         </div>
-    </nav>
-</header>
-<div class="container-fluid" style="background-color: powderblue">
-    <partial name="_CookieConsentPartial"/>
-    <main role="main" class="">
-        @RenderBody()
-    </main>
-</div>
-<footer class="border-top footer text-muted" style="background-color: aliceblue">
-    <div class="container">
-        &copy; @DateTime.Now.Year - Grasshoppers
+        
     </div>
-</footer>
+    
+    <div class="overlay"></div>
+</div>
+
 
 <environment include="Development">
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -67,6 +78,28 @@
         </script>
 </environment>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#dismiss, .overlay').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+
 
 @RenderSection("Scripts", false)
 </body>

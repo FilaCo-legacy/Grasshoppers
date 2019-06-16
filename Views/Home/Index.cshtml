@@ -4,8 +4,12 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <p>@User.Identity.Name</p>
 
+    <button type="button" id="sidebarCollapse" class="btn btn-info">
+        <i class="fas fa-align-left"></i>
+        <span>Toggle Sidebar</span>
+        </button>
+          
 }
 else
 {
@@ -17,7 +21,7 @@ else
 
         <div class="col-md-5 py-4 px-4">
             <div class="jumbotron py-4 px-4">
-                @{ await Html.RenderPartialAsync("_SignUpPartial"); }
+                @await Html.PartialAsync("_SignUpPartial")
             </div>
         </div>
     </div>
