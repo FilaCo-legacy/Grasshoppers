@@ -46,7 +46,6 @@
     <ItemGroup>
       <Folder Include="Areas\Administration\Controllers" />
       <Folder Include="Areas\Administration\Models" />
-      <Folder Include="Areas\Administration\Views\Account" />
       <Folder Include="Areas\Administration\Views\Shared" />
       <Folder Include="Areas\Playground\Controllers" />
       <Folder Include="Areas\Playground\Models" />
