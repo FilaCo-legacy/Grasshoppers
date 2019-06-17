@@ -1,5 +1,3 @@
-using System;
-
 namespace Grasshoppers.Models
 {
     public class ErrorViewModel
