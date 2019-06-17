@@ -30,7 +30,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
                 return NotFound();
             }
             
-            var model = new EditUserModel {Id = user.Id, Email = user.Email };
+            var model = new EditUserModel {Id = user.Id, Email = user.Email, UserName = user.UserName};
             return View(model);
         }
         
@@ -51,7 +51,6 @@ namespace Grasshoppers.Areas.Administration.Controllers
             {
                 return RedirectToAction("List");
             }
-
 
             foreach (var error in result.Errors)
             {

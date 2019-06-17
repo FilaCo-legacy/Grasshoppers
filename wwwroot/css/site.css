@@ -234,5 +234,22 @@ html {
   min-height: 100%;
 }
 
+/* Table's style
+-------------------------------------------------- */
+
+tbody{
+  background: aliceblue;
+  color : steelblue;
+}
+
+table tbody tr:hover{
+  background: steelblue !important;
+  color : aliceblue;
+}
+
+thead{
+  background: steelblue !important;
+  color : aliceblue;
+}
 
 
