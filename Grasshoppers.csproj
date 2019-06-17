@@ -42,4 +42,16 @@
       </Compile>
     </ItemGroup>
 
+
+    <ItemGroup>
+      <Folder Include="Areas\Administration\Controllers" />
+      <Folder Include="Areas\Administration\Models" />
+      <Folder Include="Areas\Administration\Views\Account" />
+      <Folder Include="Areas\Administration\Views\Shared" />
+      <Folder Include="Areas\Playground\Controllers" />
+      <Folder Include="Areas\Playground\Models" />
+      <Folder Include="Areas\Playground\Views\Account" />
+      <Folder Include="Areas\Playground\Views\Shared" />
+    </ItemGroup>
+
 </Project>
