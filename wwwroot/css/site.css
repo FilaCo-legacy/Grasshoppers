@@ -31,10 +31,17 @@ a:focus {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-btn {
+.navbar-btn {  
   box-shadow: none;
+  background-color: inherit;
+  color:aliceblue;
   outline: none !important;
   border: none;
+}
+
+.navbar-btn:hover{
+  color:steelblue;
+  background-color: aliceblue;
 }
 
 .line {
@@ -55,8 +62,8 @@ a:focus {
   left: -250px;
   height: 100vh;
   z-index: 999;
-  background: powderblue;
-  color: black;
+  background: aliceblue;
+  color: steelblue;
   transition: all 0.3s;
   overflow-y: scroll;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
@@ -72,6 +79,7 @@ a:focus {
   line-height: 35px;
   text-align: center;
   background: steelblue;
+    color: aliceblue;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -82,8 +90,8 @@ a:focus {
 }
 
 #dismiss:hover {
-  background: #fff;
-  color: powderblue;
+  background: aliceblue;
+  color: steelblue;
 }
 
 .overlay {
@@ -104,7 +112,7 @@ a:focus {
 #sidebar .sidebar-header {
   padding: 20px;
   background: steelblue;
-  color: white;
+  color: aliceblue;
 }
 
 #sidebar ul.components {
@@ -113,7 +121,7 @@ a:focus {
 }
 
 #sidebar ul p {
-  color: black;
+  color: steelblue;
   padding: 10px;
 }
 
@@ -124,13 +132,13 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-  color: white;
+  color: aliceblue;
   background: steelblue;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-  color: white;
+  color: aliceblue;
   background: steelblue;
 }
 
@@ -167,7 +175,7 @@ ul.CTAs a {
 a.article,
 a.article:hover {
   background: steelblue!important;
-  color: white !important;
+  color: aliceblue !important;
 }
 
 /* ---------------------------------------------------
