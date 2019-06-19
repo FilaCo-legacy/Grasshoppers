@@ -19,7 +19,6 @@ namespace Grasshoppers.Areas.Administration.Controllers
 
         public async Task<IActionResult> List(int page = 1, int pageSize = 5) => 
             View(await PaginationViewModel<User>.CreateAsync(_userManager.Users, page, pageSize));
-
         
         public async Task<IActionResult> Edit(string id)
         {
