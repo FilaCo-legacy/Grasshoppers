@@ -1,0 +1,23 @@
+@model IPaginationViewModel
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<ul class="pagination">
+    <li class="page-item @prevDisabled">
+        <a asp-area = @ViewData["Area"] asp-controller=@ViewData["Controller"] asp-action="List"
+           asp-route-pageIndex="@(Model.PageIndex - 1)"
+           class="page-link">
+            Previous
+        </a>
+    </li>
+    <li class="page-item @nextDisabled">
+        <a asp-area = @ViewData["Area"] asp-controller=@ViewData["Controller"] asp-action="List"
+           asp-route-pageIndex="@(Model.PageIndex + 1)"
+           class="page-link">
+            Next
+        </a>
+    </li>
+</ul>

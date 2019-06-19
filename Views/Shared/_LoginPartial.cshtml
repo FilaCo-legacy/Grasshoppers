@@ -3,14 +3,14 @@
 {
     <form asp-area="Identity" asp-controller="Account" asp-action="LogOut" method="post">
         
-        <button type="submit" class="btn navbar-btn">Log out</button>
+        <button type="submit" class="btn navbar-btn text-light" style="color:aliceblue;">Log out</button>
 
     </form>
 }
 else
 {
-    <a class="nav-item nav-link text-light" asp-area="Identity" asp-controller="Account" asp-action="SignIn">Sign in</a>
-    <a class="nav-item nav-link text-light" asp-area="Identity" asp-controller="Account" asp-action="SignUp">Sign up</a>
+    <a class="nav-item nav-link text-light"  style="color:aliceblue;"asp-area="Identity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+    <a class="nav-item nav-link text-light" style="color:aliceblue;" asp-area="Identity" asp-controller="Account" asp-action="SignUp">Sign up</a>
         
 }
 </div>

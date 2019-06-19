@@ -31,18 +31,7 @@ a:focus {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-btn {  
-  box-shadow: none;
-  background-color: inherit;
-  color:aliceblue;
-  outline: none !important;
-  border: none;
-}
 
-.navbar-btn:hover{
-  color:steelblue;
-  background-color: aliceblue;
-}
 
 .line {
   width: 100%;
@@ -54,6 +43,20 @@ a:focus {
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
+#sidebarCollapse {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background: steelblue;
+  color: aliceblue;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
 
 #sidebar {
   width: 250px;
@@ -242,14 +245,21 @@ tbody{
   color : steelblue;
 }
 
-table tbody tr:hover{
-  background: steelblue !important;
-  color : aliceblue;
-}
 
 thead{
   background: steelblue !important;
   color : aliceblue;
+}
+
+.hovered td
+{ 
+  background-color: lightskyblue !important; 
+  color: aliceblue;
+}
+.selected
+{ 
+  background-color: deepskyblue !important;
+  color:aliceblue ;
 }
 
 

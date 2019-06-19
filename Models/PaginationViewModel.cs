@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Grasshoppers.Models
 {
-    public class PaginationViewModel<T> : List <T>
+    public class PaginationViewModel<T> : List <T>, IPaginationViewModel
     {
         public int PageIndex { get; private set; }
         

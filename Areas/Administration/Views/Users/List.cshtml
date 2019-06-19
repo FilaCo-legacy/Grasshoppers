@@ -2,12 +2,16 @@
 
 @{
     ViewBag.Title = "List of users";
+    ViewData["Controller"] = "Roles";
+    ViewData["Area"] = "Administration";
     Layout = "_Layout";
 }
 
-<p class="h1">List of users</p>
+<p class="h2">List of users</p>
 
-<table class="table table-striped table-bordered">
+@await Html.PartialAsync("_CRUDPartial", ViewData)
+
+<table class="table table-striped table-bordered table-hover">
     
     <thead>
     <tr>
@@ -22,11 +26,6 @@
         <tr>
             <td>@user.Email</td>
             <td>@user.UserName</td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@user.Id">Edit</a> |
-                Details | 
-                <a asp-action="Delete" asp-route-id="@user.Id">Delete</a>
-            </td>
         </tr>
     }
     </tbody>
@@ -37,17 +36,4 @@
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
 
-<ul class="pagination">
-        <li class="page-item @prevDisabled">
-            <a asp-action="List"
-                           asp-route-pageIndex="@(Model.PageIndex - 1)"
-                           class="page-link">Previous
-                        </a>
-        </li>
-        <li class="page-item @nextDisabled">
-            <a asp-action="List"
-               asp-route-pageIndex="@(Model.PageIndex + 1)"
-               class="page-link">Next
-            </a>
-        </li>
-    </ul>
+@await Html.PartialAsync("_PaginationPartial", Model, ViewData)
