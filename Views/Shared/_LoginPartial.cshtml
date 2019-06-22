@@ -1,6 +1,8 @@
 <div class="navbar-nav">
 @if (User.Identity.IsAuthenticated)
 {
+    <a class="nav-link text-light" style="color: aliceblue">Hello, @User.Identity.Name</a>
+    
     <form asp-area="Identity" asp-controller="Account" asp-action="LogOut" method="post">
         
         <button type="submit" class="btn navbar-btn text-light" style="color:aliceblue;">Log out</button>
@@ -9,8 +11,8 @@
 }
 else
 {
-    <a class="nav-item nav-link text-light"  style="color:aliceblue;"asp-area="Identity" asp-controller="Account" asp-action="SignIn">Sign in</a>
-    <a class="nav-item nav-link text-light" style="color:aliceblue;" asp-area="Identity" asp-controller="Account" asp-action="SignUp">Sign up</a>
+    <a class="nav-link text-light"  style="color:aliceblue"asp-area="Identity" asp-controller="Account" asp-action="SignIn">Sign in</a>
+    <a class="nav-link text-light" style="color:aliceblue" asp-area="Identity" asp-controller="Account" asp-action="SignUp">Sign up</a>
         
 }
 </div>

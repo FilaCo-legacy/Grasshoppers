@@ -2,8 +2,6 @@
 
 @{
     ViewBag.Title = "List of users";
-    ViewData["Controller"] = "Users";
-    ViewData["Area"] = "Administration";
     Layout = "_Layout";
 }
 
@@ -25,6 +23,7 @@
     @foreach (var user in Model)
     {
         <tr>
+            <td hidden>@user.Id</td>
             <td>@user.Email</td>
             <td>@user.UserName</td>
         </tr>

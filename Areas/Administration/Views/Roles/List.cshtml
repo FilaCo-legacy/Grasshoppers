@@ -2,8 +2,6 @@
 
 @{
     ViewBag.Title = "List of roles";
-    ViewData["Controller"] = "Roles";
-    ViewData["Area"] = "Administration";
     Layout = "_Layout";
 }
 
@@ -25,6 +23,7 @@
     @foreach (var role in Model)
     {
         <tr>
+            <td hidden>@role.Id</td>
             <td>@role.Name</td>
         </tr>
     }

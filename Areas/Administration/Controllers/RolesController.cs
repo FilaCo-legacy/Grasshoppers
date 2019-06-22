@@ -6,6 +6,7 @@ using Grasshoppers.Data;
 using Grasshoppers.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Razor.Language;
 
 namespace Grasshoppers.Areas.Administration.Controllers
 {
@@ -19,6 +20,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
             _roleManager = roleManager;
 
         }
+        
         public async Task<IActionResult> List(int page = 1, int pageSize = 5) => 
             View(await PaginationViewModel<IdentityRole>.CreateAsync(_roleManager.Roles, page, pageSize));
  
@@ -40,17 +42,21 @@ namespace Grasshoppers.Areas.Administration.Controllers
             {
                 ModelState.AddModelError(string.Empty, error.Description);
             }
+
             return View();
         }
          
         [HttpPost]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(IEnumerable <string> elems)
         {
-            var role = await _roleManager.FindByIdAsync(id);
-            
-            if (role != null)
+            foreach (var curId in elems)
             {
-                await _roleManager.DeleteAsync(role);
+                var role = await _roleManager.FindByIdAsync(curId);
+            
+                if (role != null)
+                {
+                    await _roleManager.DeleteAsync(role);
+                }
             }
             
             return RedirectToAction("List");

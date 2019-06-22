@@ -1,5 +1,10 @@
+@using Microsoft.AspNetCore.Http
 @{
-    var dis = (string) ViewData["Controller"] == "Users" ? "disabled" : "";
+    var controller = (string)ViewContext.RouteData.Values["controller"];
+    var area = (string)ViewContext.RouteData.Values["area"];
+    
+    var dis = controller == "Users" ? "disabled" : "";
+    
 }
 
 <nav class="navbar navbar-expand-lg" style="background-color: lightsteelblue">
@@ -8,14 +13,18 @@
         
         <div class="navbar-brand">Actions:</div>
         
-        <a asp-area=@ViewData["Area"] asp-action="Create" asp-controller=@ViewData["Controller"]
+        <a asp-area="@area" asp-action="Create" asp-controller="@controller" 
                 id="createButton" class="navbar-btn btn btn-success mr-3 @dis">Create</a>
         
-        <a asp-area=@ViewData["Area"] asp-action="Edit" asp-controller=@ViewData["Controller"]
-           id="editButton" class="navbar-btn btn btn-primary mr-3">Edit</a>
+        <form method="post" asp-area="@area" asp-action="Edit" asp-controller="@controller"
+              id="editButton">
+            <button type="submit" class="navbar-btn btn btn-primary mr-3">Edit</button>
+        </form>
         
-       <a asp-area=@ViewData["Area"] asp-action="Delete" asp-controller=@ViewData["Controller"]
-          id="deleteButton" class="navbar-btn btn btn-danger mr-3">Delete</a>
+        <form method="post" asp-area="@area" asp-action="Delete" asp-controller="@controller"
+              id="deleteButton">
+            <button type="submit" class="navbar-btn btn btn-danger mr-3">Delete</button>
+        </form>
 
     </div>
 
