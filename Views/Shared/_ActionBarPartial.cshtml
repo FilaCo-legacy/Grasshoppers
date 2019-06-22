@@ -1,10 +1,6 @@
-@using Microsoft.AspNetCore.Http
 @{
     var controller = (string)ViewContext.RouteData.Values["controller"];
     var area = (string)ViewContext.RouteData.Values["area"];
-    
-    var dis = controller == "Users" ? "disabled" : "";
-    
 }
 
 <nav class="navbar navbar-expand-lg" style="background-color: lightsteelblue">
@@ -14,7 +10,7 @@
         <div class="navbar-brand">Actions:</div>
         
         <a asp-area="@area" asp-action="Create" asp-controller="@controller" 
-                id="createButton" class="navbar-btn btn btn-success mr-3 @dis">Create</a>
+                id="createButton" class="navbar-btn btn btn-success mr-3">Create</a>
         
         <form method="post" asp-area="@area" asp-action="Edit" asp-controller="@controller"
               id="editButton">

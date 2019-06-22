@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     $("table  tr:not(thead tr)").click(function(){
         var iter = $(".selected");
-
+        
         var check = iter.length === 0;
 
         $("#deleteButton").find(':input[type="submit"]').prop('disabled', check);

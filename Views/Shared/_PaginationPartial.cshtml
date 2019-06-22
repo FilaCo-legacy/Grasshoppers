@@ -3,18 +3,21 @@
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    
+    var controller = (string)ViewContext.RouteData.Values["controller"];
+    var area = (string)ViewContext.RouteData.Values["area"];
 }
 
 <ul class="pagination">
     <li class="page-item @prevDisabled">
-        <a asp-area = @ViewData["Area"] asp-controller=@ViewData["Controller"] asp-action="List"
+        <a asp-area = "@area" asp-controller="@controller" asp-action="List"
            asp-route-pageIndex="@(Model.PageIndex - 1)"
            class="page-link">
             Previous
         </a>
     </li>
     <li class="page-item @nextDisabled">
-        <a asp-area = @ViewData["Area"] asp-controller=@ViewData["Controller"] asp-action="List"
+        <a asp-area = "@area" asp-controller="@controller" asp-action="List"
            asp-route-pageIndex="@(Model.PageIndex + 1)"
            class="page-link">
             Next

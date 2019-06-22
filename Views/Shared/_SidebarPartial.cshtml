@@ -1,14 +1,17 @@
-<nav id="sidebar">
-            <div id="dismiss">
-                <i class="fas fa-arrow-left"></i>
-            </div>
+@if (User.Identity.IsAuthenticated)
+{
+    <nav id="sidebar">
+        <div id="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
 
-    <div class="sidebar-header">
-        <p class ="h5">What do you want to do?</p>
-    </div>
-    
-    @await Html.PartialAsync("_AdminSidebarPartial")
-    
-    @await Html.PartialAsync("_UserSidebarPartial")
+        <div class="sidebar-header">
+            <p class="h5">What do you want to do?</p>
+        </div>
 
-</nav>
+        @await Html.PartialAsync("_AdminSidebarPartial")
+
+        @await Html.PartialAsync("_UserSidebarPartial")
+
+    </nav>
+}

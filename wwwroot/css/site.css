@@ -44,6 +44,7 @@ a:focus {
     SIDEBAR STYLE
 ----------------------------------------------------- */
 #sidebarCollapse {
+  border-radius: 15%;
   width: 35px;
   height: 35px;
   line-height: 35px;
@@ -56,6 +57,11 @@ a:focus {
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
+}
+
+#sidebarCollapse:hover{
+  background: aliceblue;
+  color : steelblue !important;
 }
 
 #sidebar {
@@ -77,6 +83,7 @@ a:focus {
 }
 
 #dismiss {
+  border-radius: 15%;
   width: 35px;
   height: 35px;
   line-height: 35px;
@@ -260,6 +267,24 @@ thead{
 { 
   background-color: deepskyblue !important;
   color:aliceblue ;
+}
+
+.nav-link{
+  color : aliceblue !important;
+}
+
+.nav-link:hover{
+  color : lightsteelblue !important;
+}
+
+#logOutButton{
+  color : aliceblue;
+  border-color: aliceblue;
+}
+
+#logOutButton:hover{
+  color : steelblue; !important;
+  background-color: aliceblue; !important;
 }
 
 
