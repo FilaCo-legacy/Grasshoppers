@@ -2,14 +2,39 @@
 
 <ul class="list-unstyled components">
     <li>
-        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Administration</a>
-            <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li>
-                    <a asp-area="Administration" asp-controller="Users" asp-action="List">Users</a>
-                </li>
-                <li>
-                    <a asp-area="Administration" asp-controller="Roles" asp-action="List">Roles</a>
-                </li>
-            </ul>
+        <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false">Administration</a>
+        <ul class="collapse list-unstyled" id="adminSubmenu">
+            <li>
+                <a asp-area="Administration" asp-controller="Users" asp-action="List">Users</a>
+            </li>
+            <li>
+                <a asp-area="Administration" asp-controller="Roles" asp-action="List">Roles</a>
+            </li>
+        </ul>
+        
+        <a href="#entitiesSubmenu" data-toggle="collapse" aria-expanded="false">Grasshoppers entities</a>
+                    <ul class="collapse list-unstyled" id="entitiesSubmenu">
+                        <li>
+                            <a href ="#">Characters</a>
+                        </li>
+                        <li>
+                            <a href ="#">Characters results</a>
+                        </li>
+                        <li>
+                            <a href ="#">Game sessions</a>
+                        </li>
+                        <li>
+                            <a href ="#">Inventories</a>
+                        </li>
+                        <li>
+                            <a href ="#">Items</a>
+                        </li>
+                        <li>
+                            <a href ="#">Maps</a>
+                        </li>
+                        <li>
+                            <a href ="#">Missions</a>
+                        </li>
+                    </ul>
     </li>
 </ul>

@@ -1,14 +1,21 @@
+@{
+    var dis = (string) ViewData["Controller"] == "Users" ? "disabled" : "";
+}
+
 <nav class="navbar navbar-expand-lg" style="background-color: lightsteelblue">
     
     <div class="container-fluid justify-content-start">
         
         <div class="navbar-brand">Actions:</div>
         
-        <button id="createButton" class="navbar-btn btn btn-success mr-3">Create</button>
+        <a asp-area=@ViewData["Area"] asp-action="Create" asp-controller=@ViewData["Controller"]
+                id="createButton" class="navbar-btn btn btn-success mr-3 @dis">Create</a>
         
-        <button id="editButton" class="navbar-btn btn btn-primary mr-3">Edit</button>
+        <a asp-area=@ViewData["Area"] asp-action="Edit" asp-controller=@ViewData["Controller"]
+           id="editButton" class="navbar-btn btn btn-primary mr-3">Edit</a>
         
-        <button id="deleteButton" class="navbar-btn btn btn-danger mr-3">Delete</button>
+       <a asp-area=@ViewData["Area"] asp-action="Delete" asp-controller=@ViewData["Controller"]
+          id="deleteButton" class="navbar-btn btn btn-danger mr-3">Delete</a>
 
     </div>
 

@@ -40,7 +40,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
             {
                 ModelState.AddModelError(string.Empty, error.Description);
             }
-            return View(name);
+            return View();
         }
          
         [HttpPost]

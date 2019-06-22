@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "List of users";
-    ViewData["Controller"] = "Roles";
+    ViewData["Controller"] = "Users";
     ViewData["Area"] = "Administration";
     Layout = "_Layout";
 }
@@ -31,10 +31,5 @@
     }
     </tbody>
 </table>
-
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
 
 @await Html.PartialAsync("_PaginationPartial", Model, ViewData)

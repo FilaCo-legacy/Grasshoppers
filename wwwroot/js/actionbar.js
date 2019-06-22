@@ -1,17 +1,17 @@
 $(document).ready(function(){
-    var iter = $(".selected");
-
-    var check = iter.length === 0;
-
-    $("#deleteButton").prop("disabled", check);
-    $("#editButton").prop("disabled", check);
+    
+    $("#deleteButton").addClass("disabled");
+    $("#editButton").addClass("disabled");
     
     $("table  tr:not(thead tr)").click(function(){
-        iter = $(".selected");
+        $("#deleteButton").removeClass("disabled");
+        $("#editButton").removeClass("disabled");
+        
+        var iter = $(".selected");
 
-        check = iter.length === 0;
+        var check = iter.length === 0 ? "disabled":"";
 
-        $("#deleteButton").prop("disabled", check);
-        $("#editButton").prop("disabled", check);
+        $("#deleteButton").addClass(check);
+        $("#editButton").addClass(check);
     });
 });
