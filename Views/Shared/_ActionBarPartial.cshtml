@@ -13,12 +13,12 @@
                 id="createButton" class="navbar-btn btn btn-success mr-3">Create</a>
         
         
-        <form method="post" asp-area="@area" asp-action="Delete" asp-controller="@controller"
+        <form method="post" class="mr-auto" asp-area="@area" asp-action="Delete" asp-controller="@controller"
               id="deleteButton">
             <button type="submit" class="navbar-btn btn btn-danger mr-3">Delete</button>
         </form>
 
-        <button id="btnExport" class="navbar-btn btn btn-info mr-3">Export</button>
+        <button id="btnExport" class="navbar-btn btn btn-info">Export to .xls</button>
     </div>
 
 </nav>
