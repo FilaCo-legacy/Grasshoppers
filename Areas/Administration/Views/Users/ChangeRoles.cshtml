@@ -1,0 +1,22 @@
+@model ChangeRoleViewModel
+
+@{
+    ViewBag.Title = "Manage access rights";
+    Layout = "_Layout";
+}
+
+<h2>Manage roles of @Model.UserName</h2>
+
+<hr/>
+ 
+<form asp-action="ChangeRoles" method="post">
+    <input type="hidden" name="userId" value="@Model.UserId" />
+    <div class="form-group">
+        @foreach (var role in Model.AllRoles)
+        {
+            <input type="checkbox" name="roles" value="@role.Name"
+                   @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
+        }
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+</form>

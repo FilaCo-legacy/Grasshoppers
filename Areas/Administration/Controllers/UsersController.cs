@@ -29,92 +29,53 @@ namespace Grasshoppers.Areas.Administration.Controllers
             return View(await PaginationViewModel<User>.CreateAsync(_userManager.Users, page, pageSize));
         }
 
-        public async Task<IActionResult> Edit(IEnumerable<string> elems)
-        {
-            var model = new EditUserModel();
-            var elemsCount = elems.Count();
-
-            foreach (var curRole in _roleManager.Roles.ToList())
-            {
-                var count = 0;
-                await _userManager.Users.ForEachAsync(async
-                    user =>
-                {
-                    if (await _userManager.IsInRoleAsync(user, curRole.Name))
-                        ++count;
-                });
-                if (count == 0)
-                    model.UsersRoles.Add(curRole.Name, CheckboxState.NotChecked);
-                else if (count == elemsCount)
-                    model.UsersRoles.Add(curRole.Name, CheckboxState.Checked);
-                else 
-                    model.UsersRoles.Add(curRole.Name, CheckboxState.Indeterminate);
-            }
-
-            foreach (var curId in elems)
-            {
-                var user = await _userManager.FindByIdAsync(curId);
-
-                if (user == null) continue;
-                
-                model.UserIds.Add(user.Id);
-                
-                if (elemsCount != 1) continue;
-                
-                model.Email = user.Email;
-                model.UserName = user.UserName;
-            }
-
-            return View(model);
-        }
-        
         [HttpPost]
-        public async Task<IActionResult> Edit(EditUserModel model)
+        public async Task<ActionResult> Delete(string id)
         {
-            if (!ModelState.IsValid) return View(model);
+            var user = await _userManager.FindByIdAsync(id);
 
-            foreach (var curId in model.UserIds)
+            if (user != null)
             {
-                var user = await _userManager.FindByIdAsync(curId);
-
-                if (user == null) continue;
-                
-                user.Email = model.Email ?? user.Email;
-                user.UserName = model.UserName ?? user.UserName;
-
-                var addedRoles = (from curPair in model.UsersRoles where curPair.Value == CheckboxState.Checked select curPair.Key).ToList();
-                var removedRoles = (from curPair in model.UsersRoles where curPair.Value == CheckboxState.NotChecked select curPair.Key).ToList();
-
-                await _userManager.AddToRolesAsync(user, addedRoles);
-                await _userManager.RemoveFromRolesAsync(user, removedRoles);
-                
-                var result = await _userManager.UpdateAsync(user);
-                
-                if (result.Succeeded) continue;
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                } 
-                
-                return View(model);
+                await _userManager.DeleteAsync(user);
             }
+
             return RedirectToAction("List");
         }
-
-        [HttpPost]
-        public async Task<ActionResult> Delete(IEnumerable <string> elems)
+        
+        public async Task<IActionResult> ChangeRoles(string userId)
         {
-            foreach (var curId in elems)
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return NotFound();
+            
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var allRoles = _roleManager.Roles.ToList();
+            var model = new ChangeRoleViewModel
             {
-                var user = await _userManager.FindByIdAsync(curId);
+                UserId = user.Id,
+                UserName = user.UserName,
+                UserRoles = userRoles,
+                AllRoles = allRoles
+            };
             
-                if (user != null)
-                {
-                    await _userManager.DeleteAsync(user);
-                }
-            }
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangeRoles(string userId, List<string> roles)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
             
+            if (user == null) return NotFound();
+            
+            var userRoles = await _userManager.GetRolesAsync(user);
+                
+            var addedRoles = roles.Except(userRoles);
+                
+            var removedRoles = userRoles.Except(roles);
+ 
+            await _userManager.AddToRolesAsync(user, addedRoles);
+ 
+            await _userManager.RemoveFromRolesAsync(user, removedRoles);
+ 
             return RedirectToAction("List");
         }
     }

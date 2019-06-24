@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Grasshoppers.Areas.Administration.Models;
 using Grasshoppers.Data;
 using Grasshoppers.Models;
 using Microsoft.AspNetCore.Identity;
