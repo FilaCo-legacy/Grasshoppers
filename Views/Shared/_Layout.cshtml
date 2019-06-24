@@ -23,15 +23,18 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
-    </head>
+    
+</head>
 
 <body>
 
 <div class="wrapper">
-    @await Html.PartialAsync("_SidebarPartial")
+    <iframe id="txtArea" style="display:none"></iframe>
     
+    @await Html.PartialAsync("_SidebarPartial")
+
     <div id="content">
-        
+
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark">
                 @if (User.Identity.IsAuthenticated)
@@ -57,16 +60,16 @@
                 </div>
             </nav>
         </header>
-        
+
         <div class="container-fluid" style="background-color: powderblue">
             <partial name="_CookieConsentPartial"/>
             <main role="main" class="">
                 @RenderBody()
             </main>
         </div>
-        
+
     </div>
-    
+
     <div class="overlay"></div>
 </div>
 
@@ -95,6 +98,7 @@
 <script src="~/js/sidebar.js" asp-append-version="true"></script>
 <script src="~/js/table.js" asp-append-version="true"></script>
 <script src="~/js/actionbar.js" asp-append-version="true"></script>
+<script src="~/js/report_action.js" asp-append-version="true"></script>
 
 @RenderSection("Scripts", false)
 </body>

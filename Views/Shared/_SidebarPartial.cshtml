@@ -9,8 +9,11 @@
             <p class="h5">What do you want to do?</p>
         </div>
 
-        @await Html.PartialAsync("_AdminSidebarPartial")
-
+        @if (User.IsInRole("admin"))
+        {
+            await Html.RenderPartialAsync("_AdminSidebarPartial");
+        }
+        
         @await Html.PartialAsync("_UserSidebarPartial")
 
     </nav>
