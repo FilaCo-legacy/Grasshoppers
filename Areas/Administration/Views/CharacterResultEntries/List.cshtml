@@ -1,0 +1,47 @@
+@model PaginationViewModel<CharacterResultEntry>
+
+@{
+    ViewBag.Title = "List of characters";
+    Layout = "_Layout";
+}
+
+<h2>List of characters</h2>
+<hr/>
+
+@await Html.PartialAsync("_ActionBarPartial")
+
+<table class="table table-striped table-bordered table-hover" id="dataTable">
+    
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Last time in game</th>
+    </tr>
+    </thead>
+    
+    <tbody>
+    @foreach (var characterResultEntry in Model)
+    {
+        @*<tr>
+            <td hidden>@characterResultEntry.Id</td>
+            <td>@characterResultEntry.Name</td>
+            <td>@characterResultEntry.Gender</td>
+            <td>@characterResultEntry.LastTimeOnline.ToShortTimeString()</td>
+            <td>
+
+                <a class="btn btn-sm btn-primary" asp-action="" asp-route-id="@characterResultEntry.Id">
+                    Edit
+                </a>
+                |
+                <a class="btn btn-sm btn-info" asp-action="" asp-route-id="@characterResultEntry.Id">
+                    Details
+                </a>
+                
+            </td>
+        </tr>*@
+    }
+    </tbody>
+</table>
+
+@await Html.PartialAsync("_PaginationPartial", Model, ViewData)

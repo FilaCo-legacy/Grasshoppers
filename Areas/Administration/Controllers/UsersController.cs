@@ -28,7 +28,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete(IEnumerable<string> elems)
+        public async Task<IActionResult> Delete(IEnumerable<string> elems)
         {
             var invokerUser = await _userManager.FindByNameAsync(User.Identity.Name);
             
