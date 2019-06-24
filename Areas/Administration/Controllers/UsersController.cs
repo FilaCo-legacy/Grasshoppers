@@ -28,13 +28,20 @@ namespace Grasshoppers.Areas.Administration.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(IEnumerable<string> elems)
         {
-            var user = await _userManager.FindByIdAsync(id);
-
-            if (user != null)
+            var invokerUser = await _userManager.FindByEmailAsync(User.Identity.Name);
+            
+            foreach (var curId in elems)
             {
-                await _userManager.DeleteAsync(user);
+                if (curId == invokerUser.Id) continue;
+                
+                var user = await _userManager.FindByIdAsync(curId);
+
+                if (user != null)
+                {
+                    await _userManager.DeleteAsync(user);
+                }   
             }
 
             return RedirectToAction("List");
@@ -49,7 +56,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
             var allRoles = _roleManager.Roles.ToList();
             var model = new ChangeRoleViewModel
             {
-                UserId = user.Id,
+                Id = user.Id,
                 UserName = user.UserName,
                 UserRoles = userRoles,
                 AllRoles = allRoles

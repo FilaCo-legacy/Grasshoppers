@@ -32,6 +32,9 @@ namespace Grasshoppers.Areas.Identity.Controllers
             var user = new User { UserName = model.UserName, Email =  model.Email};
 
             var result = await _userManager.CreateAsync(user, model.Password);
+
+            _userManager.AddToRoleAsync(user, "user");
+            
             if (result.Succeeded)
             {
                 // Setup cookies

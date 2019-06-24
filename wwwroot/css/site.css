@@ -263,6 +263,11 @@ thead{
   background-color: lightskyblue !important; 
   color: aliceblue;
 }
+.selected
+{ 
+  background-color: deepskyblue !important;
+  color:aliceblue ;
+}
 
 .nav-link{
   color : aliceblue !important;

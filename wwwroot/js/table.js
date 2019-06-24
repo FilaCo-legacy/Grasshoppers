@@ -4,4 +4,8 @@ $(document).ready(function(){
     }, function(){
         $(this).removeClass("hovered")
     });
+
+    $("table  tr:not(thead tr)").click(function(){
+        $(this).toggleClass("selected");
+    });
 });
