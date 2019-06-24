@@ -47,16 +47,13 @@ namespace Grasshoppers.Areas.Administration.Controllers
         }
          
         [HttpPost]
-        public async Task<IActionResult> Delete(IEnumerable <string> elems)
+        public async Task<IActionResult> Delete(string id)
         {
-            foreach (var curId in elems)
-            {
-                var role = await _roleManager.FindByIdAsync(curId);
+            var role = await _roleManager.FindByIdAsync(id);
             
-                if (role != null)
-                {
-                    await _roleManager.DeleteAsync(role);
-                }
+            if (role != null)
+            {
+                await _roleManager.DeleteAsync(role);
             }
             
             return RedirectToAction("List");

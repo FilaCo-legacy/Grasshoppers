@@ -1,6 +1,8 @@
+using System.Collections;
+
 namespace Grasshoppers.Models
 {
-    public interface IPaginationViewModel
+    public interface IPaginationViewModel : IList
     {
         int PageIndex { get; }
 
@@ -9,6 +11,5 @@ namespace Grasshoppers.Models
         bool HasPreviousPage { get; }
 
         bool HasNextPage { get; }
-        
     }
 }

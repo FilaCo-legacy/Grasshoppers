@@ -1,24 +1,49 @@
 @model IPaginationViewModel
 
 @{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    var prevHidden = !Model.HasPreviousPage ? "hidden" : "";
+    var curHidden = !Model.HasPreviousPage && !Model.HasNextPage ? "hidden" : "";
+    var nextHidden = !Model.HasNextPage ? "hidden" : "";
     
     var controller = (string)ViewContext.RouteData.Values["controller"];
     var area = (string)ViewContext.RouteData.Values["area"];
 }
 
 <ul class="pagination">
-    <li class="page-item @prevDisabled">
-        <a asp-area = "@area" asp-controller="@controller" asp-action="List"
-           asp-route-pageIndex="@(Model.PageIndex - 1)"
+    <li class="page-item" @prevHidden>
+        <a asp-area="@area" asp-controller="@controller" asp-action="List"
+           asp-route-page="@(Model.PageIndex - 1)"
            class="page-link">
             Previous
         </a>
     </li>
-    <li class="page-item @nextDisabled">
-        <a asp-area = "@area" asp-controller="@controller" asp-action="List"
-           asp-route-pageIndex="@(Model.PageIndex + 1)"
+    <li class="page-item" @prevHidden>
+        <a asp-area="@area" asp-controller="@controller" asp-action="List"
+           asp-route-page="@(Model.PageIndex - 1)"
+           class="page-link">
+            @(Model.PageIndex - 1)
+        </a>
+    </li>
+             
+    <li class="page-item" @curHidden>
+        <a asp-area="@area" asp-controller="@controller" asp-action="List"
+           asp-route-page="@Model.PageIndex"
+           class="page-link">
+            @Model.PageIndex
+        </a>
+    </li>
+             
+    <li class="page-item" @nextHidden>
+        <a asp-area="@area" asp-controller="@controller" asp-action="List"
+           asp-route-page="@(Model.PageIndex + 1)"
+           class="page-link">
+            @(Model.PageIndex + 1)
+        </a>
+    </li>
+             
+    <li class="page-item" @nextHidden>
+        <a asp-area="@area" asp-controller="@controller" asp-action="List"
+           asp-route-page="@(Model.PageIndex + 1)"
            class="page-link">
             Next
         </a>
