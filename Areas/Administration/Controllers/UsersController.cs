@@ -6,8 +6,6 @@ using Grasshoppers.Data;
 using Grasshoppers.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.EntityFrameworkCore;
 
 namespace Grasshoppers.Areas.Administration.Controllers
 {
@@ -42,9 +40,9 @@ namespace Grasshoppers.Areas.Administration.Controllers
             return RedirectToAction("List");
         }
         
-        public async Task<IActionResult> ChangeRoles(string userId)
+        public async Task<IActionResult> ChangeRoles(string id)
         {
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync(id);
             if (user == null) return NotFound();
             
             var userRoles = await _userManager.GetRolesAsync(user);
@@ -59,10 +57,11 @@ namespace Grasshoppers.Areas.Administration.Controllers
             
             return View(model);
         }
+        
         [HttpPost]
-        public async Task<IActionResult> ChangeRoles(string userId, List<string> roles)
+        public async Task<IActionResult> ChangeRoles(string id, List<string> roles)
         {
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync(id);
             
             if (user == null) return NotFound();
             

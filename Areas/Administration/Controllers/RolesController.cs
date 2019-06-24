@@ -1,11 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Grasshoppers.Data;
 using Grasshoppers.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Razor.Language;
 
 namespace Grasshoppers.Areas.Administration.Controllers
 {
