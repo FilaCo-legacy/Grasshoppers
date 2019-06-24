@@ -33,7 +33,7 @@ namespace Grasshoppers.Areas.Identity.Controllers
 
             var result = await _userManager.CreateAsync(user, model.Password);
 
-            _userManager.AddToRoleAsync(user, "user");
+            await _userManager.AddToRoleAsync(user, "user");
             
             if (result.Succeeded)
             {

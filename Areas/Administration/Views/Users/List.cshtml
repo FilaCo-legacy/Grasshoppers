@@ -23,10 +23,11 @@
     @foreach (var user in Model)
     {
         <tr>
+            <td hidden>@user.Id</td>
             <td>@user.Email</td>
             <td>@user.UserName</td>
             <td>
-                
+
                 <a class="btn btn-sm btn-primary" asp-action="ChangeRoles" asp-route-id="@user.Id">
                     Manage access rights
                 </a>

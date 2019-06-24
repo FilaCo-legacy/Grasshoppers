@@ -30,7 +30,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
         [HttpPost]
         public async Task<ActionResult> Delete(IEnumerable<string> elems)
         {
-            var invokerUser = await _userManager.FindByEmailAsync(User.Identity.Name);
+            var invokerUser = await _userManager.FindByNameAsync(User.Identity.Name);
             
             foreach (var curId in elems)
             {
