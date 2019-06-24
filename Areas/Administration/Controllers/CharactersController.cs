@@ -47,5 +47,36 @@ namespace Grasshoppers.Areas.Administration.Controllers
             
             return RedirectToAction("List");
         }
+        
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null) return NotFound();
+            
+            var character = await _db.Characters.FirstOrDefaultAsync(ch => ch.Id == id);
+            
+            if (character != null)
+                return View(character);
+            
+            return NotFound();
+        }
+        
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+            
+            var character = await _db.Characters.FirstOrDefaultAsync(ch => ch.Id == id);
+            
+            if (character != null)
+                return View(character);
+            
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Character character)
+        {
+            _db.Characters.Update(character);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("List");
+        }
     }
 }
