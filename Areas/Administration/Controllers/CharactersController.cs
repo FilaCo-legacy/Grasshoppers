@@ -85,11 +85,13 @@ namespace Grasshoppers.Areas.Administration.Controllers
             if (id == null) return NotFound();
             
             var character = await _db.Characters.FirstOrDefaultAsync(ch => ch.Id == id);
+
+            if (character == null)
+                return NotFound();
             
-            if (character != null)
-                return View(character);
+            PopulateUsersDropDownList(character.UserId);
             
-            return NotFound();
+            return View(character);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(Character character)
