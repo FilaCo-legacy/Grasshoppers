@@ -1,7 +1,7 @@
 @model Character
 
 @{
-    ViewBag.Title = "Edit character";
+    ViewBag.Title = "Edit the character";
     Layout = "_Layout";
 }
 
@@ -22,18 +22,28 @@
 
     </div>
     
+    <div class="form-group col-md-6" hidden>
+                
+        <label asp-for="LastTimeOnline"></label>
+        <input asp-for="LastTimeOnline" class="form-control" required/>
+        <span asp-validation-for="LastTimeOnline"></span>
+                
+    </div>
+    
+    
     <div class="form-group col-md-6">
             
-            <label asp-for="Name"></label>
-            <input type="text" asp-for="Name" class="form-control" placeholder="Enter character's name" required/>
-            <span asp-validation-for="Name"></span>
+        <label asp-for="Name"></label>
+        <input type="text" asp-for="Name" class="form-control" placeholder="Change character's name" required/>
+        <span asp-validation-for="Name"></span>
             
-        </div>
+    </div>
+    
         
     <div class="form-group col-md-6">
                 
         <label asp-for="Gender"></label>
-        <select asp-for="Gender" class="form-control" asp-items="@(Html.GetEnumSelectList<CharacterGender>())", value="@Model.Gender">
+        <select asp-for="Gender" class="form-control" asp-items="@(Html.GetEnumSelectList<CharacterGender>())">
         </select>
         <span asp-validation-for="Gender"></span>
                 

@@ -26,8 +26,17 @@ namespace Grasshoppers.Areas.Administration.Controllers
                     orderby user.UserName
                     select user;
             
-            ViewBag.Users = new SelectList(usersQuery, "Id", 
+            ViewBag.Users = new SelectList(usersQuery.AsNoTracking(), "Id", 
                 "UserName", selectedUser);
+        }
+        
+        private void PopulateInventory(int id)
+        {
+            var inventoryQuery = from invEntry in _db.Inventories where invEntry.CharacterId == id
+                orderby invEntry.Item.Name
+                select invEntry.Item;
+
+            ViewBag.Inventory = inventoryQuery.AsNoTracking().ToList();
         }
         
         public async Task<IActionResult> Index(int page = 1, int pageSize = 5)
@@ -72,12 +81,16 @@ namespace Grasshoppers.Areas.Administration.Controllers
         {
             if (id == null) return NotFound();
             
-            var character = await _db.Characters.FirstOrDefaultAsync(ch => ch.Id == id);
-            
-            if (character != null)
-                return View(character);
-            
-            return NotFound();
+            var character = await _db.Characters.Include(ch=>ch.Owner)
+                .Include(ch=> ch.Inventory)
+                .ThenInclude(inv=>inv.Item)
+                .FirstOrDefaultAsync(ch => ch.Id == id);
+
+            if (character == null)
+                return NotFound();
+                    
+            PopulateInventory((int)id);
+            return View(character);
         }
         
         public async Task<IActionResult> Edit(int? id)

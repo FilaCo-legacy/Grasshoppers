@@ -1,8 +1,26 @@
-
+@model Item
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = Model.Name;
 }
 
-<h2>title</h2>
+
+<div class="jumbotron" style="background-color: aliceblue">
+    <h2>About <strong>@Model.Name</strong></h2>
+    
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>Description</dt>
+        <dd>@Model.Description</dd>
+
+        <dt>Rarity</dt>
+        <dd>@Model.Rarity</dd>
+
+        <dt>Owners</dt>
+        @foreach (var character in ViewBag.Owners)
+        {
+            <dd>@character.Name</dd>
+        }
+
+    </dl>
+</div>
