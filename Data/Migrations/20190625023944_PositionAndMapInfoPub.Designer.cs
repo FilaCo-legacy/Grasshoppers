@@ -3,15 +3,17 @@ using System;
 using Grasshoppers.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Grasshoppers.Data.Migrations
 {
     [DbContext(typeof(GrasshoppersContext))]
-    partial class GrasshoppersContextModelSnapshot : ModelSnapshot
+    [Migration("20190625023944_PositionAndMapInfoPub")]
+    partial class PositionAndMapInfoPub
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

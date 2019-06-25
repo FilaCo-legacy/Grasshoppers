@@ -1,8 +1,23 @@
-
+@model Map
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = string.Format($"Map №{Model.Id} details");
 }
 
-<h2>title</h2>
+
+<div class="jumbotron" style="background-color: aliceblue">
+    <h2>About map №<strong>@Model.Id</strong></h2>
+    
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>Information</dt>
+        <dd>@Model.MapInfo</dd>
+
+        <dt>Related missions</dt>
+        @foreach (var mission in ViewBag.Missions)
+        {
+            <dd>@mission.Name</dd>
+        }
+
+    </dl>
+</div>

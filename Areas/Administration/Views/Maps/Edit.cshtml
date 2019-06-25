@@ -1,8 +1,25 @@
-
+@model Map
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = string.Format($"Edit Map №{Model.Id}");
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Edit map №<strong>@Model.Id</strong></h2>
+
+<hr/>
+
+<div asp-validation-summary="All"></div>
+
+<form asp-action="Edit" method="post">
+   
+    <div class="form-group col-md-6">
+            
+        <label asp-for="MapInfo"></label>
+        <input type="text" asp-for="MapInfo" class="form-control" placeholder="Enter map's info" required/>
+        <span asp-validation-for="MapInfo"></span>
+    
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>

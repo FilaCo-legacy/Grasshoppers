@@ -20,7 +20,7 @@ namespace Grasshoppers.Data
         /// Serialized info about a position of this character (map, coords, etc.)
         /// </summary>
         [Required]
-        internal string Position { get; private set; }
+        public string Position { get; set; }
         
         public int Id { get; set; }
         

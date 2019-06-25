@@ -10,7 +10,7 @@ namespace Grasshoppers.Data
         /// <summary>
         /// Serialized map information
         /// </summary>
-        internal string MapInfo { get; private set; }
+        public string MapInfo { get; set; }
 
         public int Id { get; set; }
 
