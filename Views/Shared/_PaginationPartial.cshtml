@@ -11,14 +11,14 @@
 
 <ul class="pagination">
     <li class="page-item" @prevHidden>
-        <a asp-area="@area" asp-controller="@controller" asp-action="List"
+        <a asp-area="@area" asp-controller="@controller" asp-action="Index"
            asp-route-page="@(Model.PageIndex - 1)"
            class="page-link">
             Previous
         </a>
     </li>
     <li class="page-item" @prevHidden>
-        <a asp-area="@area" asp-controller="@controller" asp-action="List"
+        <a asp-area="@area" asp-controller="@controller" asp-action="Index"
            asp-route-page="@(Model.PageIndex - 1)"
            class="page-link">
             @(Model.PageIndex - 1)
@@ -26,7 +26,7 @@
     </li>
              
     <li class="page-item" @curHidden>
-        <a asp-area="@area" asp-controller="@controller" asp-action="List"
+        <a asp-area="@area" asp-controller="@controller" asp-action="Index"
            asp-route-page="@Model.PageIndex"
            class="page-link">
             @Model.PageIndex
@@ -34,7 +34,7 @@
     </li>
              
     <li class="page-item" @nextHidden>
-        <a asp-area="@area" asp-controller="@controller" asp-action="List"
+        <a asp-area="@area" asp-controller="@controller" asp-action="Index"
            asp-route-page="@(Model.PageIndex + 1)"
            class="page-link">
             @(Model.PageIndex + 1)
@@ -42,7 +42,7 @@
     </li>
              
     <li class="page-item" @nextHidden>
-        <a asp-area="@area" asp-controller="@controller" asp-action="List"
+        <a asp-area="@area" asp-controller="@controller" asp-action="Index"
            asp-route-page="@(Model.PageIndex + 1)"
            class="page-link">
             Next

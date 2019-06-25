@@ -1,12 +1,16 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Grasshoppers.Data;
 using Grasshoppers.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Grasshoppers.Areas.Administration.Controllers
 {
+    [Area("Administration")]
     public class CharactersController : Controller
     {
         private readonly GrasshoppersContext _db;
@@ -15,8 +19,18 @@ namespace Grasshoppers.Areas.Administration.Controllers
         {
             _db = context;
         }
+
+        private void PopulateUsersDropDownList(object selectedUser= null)
+        {
+            var usersQuery = from user in _db.Users
+                    orderby user.UserName
+                    select user;
+            
+            ViewBag.Users = new SelectList(usersQuery, "Id", 
+                "UserName", selectedUser);
+        }
         
-        public async Task<IActionResult> List(int page = 1, int pageSize = 5)
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 5)
         {
             return View(await PaginationViewModel<Character>.CreateAsync(_db.Characters, page, pageSize));
         }
@@ -34,18 +48,24 @@ namespace Grasshoppers.Areas.Administration.Controllers
                 await _db.SaveChangesAsync();
             }
 
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
         
-        public IActionResult Create() => View();
+        public IActionResult Create()
+        {
+            PopulateUsersDropDownList();
+            return View();
+        }
         
         [HttpPost]
         public async Task<IActionResult> Create(Character character)
         { 
+            character.LastTimeOnline = DateTime.Now;
+            
             _db.Characters.Add(character);
             await _db.SaveChangesAsync();
             
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
         
         public async Task<IActionResult> Details(int? id)
@@ -76,7 +96,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
         {
             _db.Characters.Update(character);
             await _db.SaveChangesAsync();
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace Grasshoppers.Areas.Administration.Controllers
 {
-    public class MissionsController
+    [Area("Administration")]
+    public class MissionsController: Controller
     {
         
     }

@@ -7,11 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Grasshoppers.Areas.Administration.Controllers
 {
-    public class CharacterResultEntriesController : Controller
+    [Area("Administration")]
+    public class CharactersResultsController : Controller
     {
         private readonly GrasshoppersContext _db;
 
-        public CharacterResultEntriesController(GrasshoppersContext context)
+        public CharactersResultsController(GrasshoppersContext context)
         {
             _db = context;
         }

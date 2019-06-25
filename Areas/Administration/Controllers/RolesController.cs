@@ -17,7 +17,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
 
         }
         
-        public async Task<IActionResult> List(int page = 1, int pageSize = 5) => 
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 5) => 
             View(await PaginationViewModel<IdentityRole>.CreateAsync(_roleManager.Roles, page, pageSize));
  
         public IActionResult Create() => View();
@@ -31,7 +31,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
             
             if (result.Succeeded)
             {
-                return RedirectToAction("List");
+                return RedirectToAction("Index");
             }
 
             foreach (var error in result.Errors)
@@ -55,7 +55,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
                 }   
             }
             
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
     }
 }

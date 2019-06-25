@@ -22,7 +22,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
             _roleManager = roleManager;
         }
 
-        public async Task<IActionResult> List(int page = 1, int pageSize = 5)
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 5)
         {
             return View(await PaginationViewModel<User>.CreateAsync(_userManager.Users, page, pageSize));
         }
@@ -44,7 +44,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
                 }   
             }
 
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
         
         public async Task<IActionResult> ChangeRoles(string id)
@@ -82,7 +82,7 @@ namespace Grasshoppers.Areas.Administration.Controllers
  
             await _userManager.RemoveFromRolesAsync(user, removedRoles);
  
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
     }
 }

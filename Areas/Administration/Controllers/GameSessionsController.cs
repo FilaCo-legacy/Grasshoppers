@@ -7,7 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Grasshoppers.Areas.Administration.Controllers
 {
-    public class GameSessionsController
+    [Area("Administration")]
+    public class GameSessionsController : Controller
     {
         private readonly GrasshoppersContext _db;
 

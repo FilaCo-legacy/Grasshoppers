@@ -16,7 +16,7 @@
     <tr>
         <th>Name</th>
         <th>Gender</th>
-        <th>Last time in game</th>
+        <th>Last time online</th>
     </tr>
     </thead>
     
@@ -27,7 +27,7 @@
             <td hidden>@character.Id</td>
             <td>@character.Name</td>
             <td>@character.Gender</td>
-            <td>@character.LastTimeOnline.ToShortTimeString()</td>
+            <td>@character.LastTimeOnline</td>
             <td>
 
                 <a class="btn btn-sm btn-primary" asp-action="" asp-route-id="@character.Id">
